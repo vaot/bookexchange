@@ -1,0 +1,25 @@
+%ul.each-book-list-wrapper
+  %li.each-book-container(ng-repeat="book in books")
+    %hi {{book.title}}
+  %li.each-book-container(ng-repeat="book in books")
+    %hi {{book.title}}
+  %li.each-book-container(ng-repeat="book in books")
+    %hi {{book.title}}
+  %li.each-book-container(ng-repeat="book in books")
+    %hi {{book.title}}
+  %li.each-book-container(ng-repeat="book in books")
+    %hi {{book.title}}
+  %li.each-book-container(ng-repeat="book in books")
+    %hi {{book.title}}
+  %li.each-book-container(ng-repeat="book in books")
+    %hi {{book.title}}
+  %li.each-book-container(ng-repeat="book in books")
+    %hi {{book.title}}
+  %li.each-book-container(ng-repeat="book in books")
+    %hi {{book.title}}
+  %li.each-book-container(ng-repeat="book in books")
+    %hi {{book.title}}
+  %li.each-book-container(ng-repeat="book in books")
+    %hi {{book.title}}
+  %li.each-book-container(ng-repeat="book in books")
+    %hi {{book.title}}
