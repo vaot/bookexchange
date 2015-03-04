@@ -13,21 +13,3 @@
  *= require_tree .
  *= require_self
  */
-
-
-.site-container {
-  margin-top: 70px;
-  width: auto;
-  overflow-x: scroll;
-  overflow-y: hidden;
-  white-space: nowrap;
-}
-
-.each-book-list-wrapper {
-  list-style: none;
-}
-
-.each-book-container {
-  float: left;
-  margin-left: 20px;
-}

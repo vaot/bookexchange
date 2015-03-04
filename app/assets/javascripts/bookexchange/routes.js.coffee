@@ -28,11 +28,30 @@ app.config [
       .state 'books.index',
         url: '/books'
         templateUrl: '/templates/books/index.html'
-        controller: 'BookController'
+        controller: 'BookIndexController'
         resolve:
           books: [
             "BookService"
             (BookService) ->
               BookService.query().$promise
+          ]
+
+      .state 'books.new',
+        url: '/books/new'
+        templateUrl: '/templates/books/new.html'
+        controller: 'BookController'
+        resolve:
+          bookResource: -> {}
+
+    .state 'books.edit',
+        url: '/books/:id/edit'
+        templateUrl: '/templates/books/edit.html'
+        controller: 'BookController'
+        resolve:
+          bookResource: [
+            "BookService"
+            '$stateParams'
+            (BookService, $stateParams) ->
+              BookService.get(id: $stateParams.id).$promise
           ]
 ]

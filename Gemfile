@@ -23,11 +23,16 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
-# Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-gem 'spring',        group: :development
+group :development do
+  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'spring'
+  gem 'pry'
+end
 
-
+gem "paperclip", "~> 4.2"
 gem 'haml'
+gem 'aws-sdk-v1'
+gem 'acts-as-taggable-on', '~> 3.4'
 
 gem 'active_model_serializers'
 gem 'haml_coffee_assets', git: "https://github.com/netzpirat/haml_coffee_assets"

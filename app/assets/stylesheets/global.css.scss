@@ -1,0 +1,65 @@
+.site-container {
+  margin-top: 70px;
+  width: auto;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+
+.each-book-list-wrapper {
+  list-style: none;
+}
+
+.each-book-container {
+  float: left;
+  margin-left: 20px;
+}
+
+.button {
+  -moz-appearance: button;
+  /* Firefox */
+  -webkit-appearance: button;
+  /* Safari and Chrome */
+  padding: 10px;
+  margin: 10px;
+  width: 70px;
+}
+.drop-box {
+  background: #F8F8F8;
+  border: 5px dashed #DDD;
+  width: 200px;
+  height: 65px;
+  text-align: center;
+  margin: 10px;
+}
+.drop-box:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -0.25em; /* Adjusts for spacing */
+}
+.dragover {
+  border: 5px dashed blue;
+}
+
+.upload_file_btn_container {
+  position: relative;
+}
+
+.file_input {
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+
+body {
+  background-color: #e5e5e5;
+}
+
+.book-container {
+  background-color: #fff;
+  padding: 10px;
+  width: 200px;
+}

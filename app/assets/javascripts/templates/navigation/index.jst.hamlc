@@ -6,32 +6,35 @@
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      %a.navbar-brand{:href => "#"} Project name
+      %a.navbar-brand(ui-sref="books.index" ng-click="setPredicate('all')") BookExchange
     #navbar.collapse.navbar-collapse
       %ul.nav.navbar-nav
         %li.active
-          %a{:href => "#"} Home
+          %a(ng-click="tag.predicate = 'popular' ") Popular
         %li
-          %a{:href => "#about"} About
+          %a(ng-click="tag.predicate = 'random_picks' ") Random Picks
         %li
-          %a{:href => "#contact"} Contact
+          %a(ui-sref="books.new") Create new
         %li.dropdown
           %a.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-            Dropdown
+            Schools
             %span.caret
           %ul.dropdown-menu{:role => "menu"}
             %li
-              %a{:href => "#"} Action
+              %a(ng-click="setPredicate('sfu')") SFU
             %li
-              %a{:href => "#"} Another action
+              %a(ng-click="setPredicate('ubc')") UBC
             %li
-              %a{:href => "#"} Something else here
+              %a(ng-click="setPredicate('uvic')") UVIC
             %li.divider
-            %li.dropdown-header Nav header
+            %li.dropdown-header U CALGARY
             %li
               %a{:href => "#"} Separated link
             %li
               %a{:href => "#"} One more separated link
+      %ul.nav.navbar-nav.pull-right
+        %li.act
+          %a{:href => "#"} Login With Facebook
 
 %nav.navbar.navbar-default.navbar-fixed-bottom
   .container
@@ -41,15 +44,15 @@
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      %a.navbar-brand{:href => "#"} Bottom Bar
+      %a.navbar-brand{:href => "#"} Categories
     #navbar.collapse.navbar-collapse
       %ul.nav.navbar-nav
         %li.active
-          %a{:href => "#"} Category 1
+          %a(ng-click="tag.predicate = 'cmpt' ") CMPT
         %li
-          %a{:href => "#about"} Category 2
+          %a(ng-click="tag.predicate = 'math' ") MATH
         %li
-          %a{:href => "#contact"} Category 3
+          %a(ng-click="tag.predicate = 'bio' ") BIO
 
 .site-container
   %div(ui-view)
