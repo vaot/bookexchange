@@ -1,6 +1,9 @@
 == TO DO:
 
-- Upload book cover to S3
-- Do horizontal scrolling for books
 - Finish restful API
-- Finish Angular App
+- Create Offers Model
+- Create Trade Model
+- User Model(Facebook Login)
+- Follower relationship
+- Finish layout design
+- Notifications 
