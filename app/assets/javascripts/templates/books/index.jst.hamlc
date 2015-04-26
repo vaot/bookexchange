@@ -1,11 +1,9 @@
-{{tag.predicate}}
-.books-container(ng-style="{width: books.length*250}")
-  %ul.each-book-list-wrapper
-    %li.each-book-container(ng-repeat="book in books | bookHasTag:tag.predicate ")
-      .book-container
-        %h1 {{book.title | limitTo:8}}
-        %h3 {{book.author}}
-        %img(src="{{book.cover_url}}")
-        %a(ui-sref="books.edit({id: book.id})") Edit
-        %ul
-          %li(ng-repeat="tag in book.tag_list") {{ tag }}
+.books-horizontal-scroll-container
+  .books-container(ng-style="{width: books.length*250}")
+    %ul.each-book-list-wrapper
+      %li.each-book-container(ng-repeat="book in books | bookHasTag:tag.predicates ")
+        .book-container
+          %h1 {{book.title | limitTo:8}}
+          %h3 {{book.author}}
+          %img(src="{{book.cover_url}}")
+          %a(ui-sref="books.edit({id: book.id})") Edit

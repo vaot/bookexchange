@@ -5,7 +5,7 @@ class Api::V1::BooksController < ApplicationController
   end
 
   def create
-    @book = Book.new(book_params.merge(tag_params))
+    @book = Book.new(book_params)
     @book.cover = media
 
     if @book.save
@@ -44,10 +44,6 @@ class Api::V1::BooksController < ApplicationController
 
   def media_params
     params.require(:book_cover).permit(:id)
-  end
-
-  def tag_params
-    params.permit(tag_list: [])
   end
 
   def media

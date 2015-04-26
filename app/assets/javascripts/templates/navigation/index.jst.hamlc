@@ -9,29 +9,8 @@
       %a.navbar-brand(ui-sref="books.index" ng-click="setPredicate('all')") BookExchange
     #navbar.collapse.navbar-collapse
       %ul.nav.navbar-nav
-        %li.active
-          %a(ng-click="tag.predicate = 'popular' ") Popular
         %li
-          %a(ng-click="tag.predicate = 'random_picks' ") Random Picks
-        %li
-          %a(ui-sref="books.new") Create new
-        %li.dropdown
-          %a.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-            Schools
-            %span.caret
-          %ul.dropdown-menu{:role => "menu"}
-            %li
-              %a(ng-click="setPredicate('sfu')") SFU
-            %li
-              %a(ng-click="setPredicate('ubc')") UBC
-            %li
-              %a(ng-click="setPredicate('uvic')") UVIC
-            %li.divider
-            %li.dropdown-header U CALGARY
-            %li
-              %a{:href => "#"} Separated link
-            %li
-              %a{:href => "#"} One more separated link
+          %a(ui-sref="books.new") Post an Offer
       %ul.nav.navbar-nav.pull-right
         %li.act
           %a{:href => "#"} Login With Facebook

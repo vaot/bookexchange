@@ -32,7 +32,10 @@ end
 gem "paperclip", "~> 4.2"
 gem 'haml'
 gem 'aws-sdk-v1'
-gem 'acts-as-taggable-on', '~> 3.4'
+
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-facebook'
 
 gem 'active_model_serializers'
 gem 'haml_coffee_assets', git: "https://github.com/netzpirat/haml_coffee_assets"

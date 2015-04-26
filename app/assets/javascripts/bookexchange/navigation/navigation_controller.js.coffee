@@ -4,8 +4,8 @@ app.controller "NavigationController", [
   "$scope"
   ($scope) ->
     $scope.tag = {}
-    $scope.tag.predicate = "all"
+    $scope.tag.predicates = []
     $scope.setPredicate = (tag) ->
       console.log "oiiiiiiiiiiiiiiiiiiiiiiiii"
-      $scope.tag.predicate = tag
+      $scope.tag.predicates.push tag
 ]

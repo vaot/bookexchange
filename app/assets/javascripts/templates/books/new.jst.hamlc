@@ -41,12 +41,6 @@
         %label
           %input(type="checkbox" value="book.auctioning_enable")
           Enable auctioning
-
-  .row
-    .col-md-5
-      .form-group
-        %label Tags
-        %input.form-control(type="text" placeholder="Book Title" ng-model="book.tag_list" ng-list=",")
   .row
     .col-md-5
       %button.btn.btn-primary(ng-click="create()") Create
