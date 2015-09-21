@@ -1,0 +1,10 @@
+.container
+  .row
+    .col-md-6
+      %div(ng-include="'/templates/books/book.html'")
+      .form-group
+        %label Place a bid
+        %input.form-control(type="number" ng-model="bid.price")
+        %button.btn.btn-primary(ng-click="create()") Save
+    .col-md-6
+      %div(ui-view="bids")

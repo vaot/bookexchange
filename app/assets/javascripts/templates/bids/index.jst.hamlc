@@ -1,0 +1,4 @@
+%h1 Bids
+.row(ng-repeat="bid in bids")
+  .col-md-12
+    {{bid.user.first_name}} {{bid.price}}

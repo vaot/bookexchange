@@ -1,0 +1,6 @@
+%h1 {{filter.label}}
+.books-horizontal-scroll-container
+  .books-container(ng-style="{width: books.length*380}")
+    %ul.each-book-list-wrapper.clearfix
+      %li.each-book-container(ng-repeat="book in books | filter:searchBook")
+        %div(ng-include="'/templates/books/book.html'")

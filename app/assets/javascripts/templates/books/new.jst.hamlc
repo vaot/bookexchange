@@ -1,46 +1,5 @@
 .container
-  .row
-    .col-md-5
-      .form-group
-        %label Book Title
-        %input.form-control(type="text" placeholder="Book Title" ng-model="book.title")
-      .form-group
-        %label Author Name
-        %input.form-control(type="text" placeholder="Book Title" ng-model="book.author")
-      .form-group
-        %label ISBN
-        %input.form-control(type="text" placeholder="Book Title" ng-model="book.isbn")
-    .col-md-5
-      .form-group
-        %label Upload a book cover
-      .drop-box(ng-file-drop="upload($files)"
-                ng-model="files"
-                drag-over-class="dragover"
-                ng-multiple="true"
-                allow-dir="true"
-                accept="image/*,application/pdf")
-
-        %span.btn.btn-success.upload_file_btn_container
-          %i.fa.fa-plus
-          %span Select File
-          %input.form-control.file_input( type="file" ng-file-select="onFileSelect($files)" )
-      %ul
-        %li(ng-repeat="f in files" style="font:smaller") {{f.name}}
-
-  .row
-    .col-md-5
-      .checkbox
-        %label
-          %input(type="checkbox" ng-value="book.accept_offers")
-          Accept Offers
-      .checkbox
-        %label
-          %input(type="checkbox" value="book.show_offers")
-          Show Offers to other users
-      .checkbox
-        %label
-          %input(type="checkbox" value="book.auctioning_enable")
-          Enable auctioning
+  %div(ng-include="'/templates/books/form.html'")
   .row
     .col-md-5
       %button.btn.btn-primary(ng-click="create()") Create

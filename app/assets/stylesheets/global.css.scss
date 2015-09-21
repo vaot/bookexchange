@@ -1,10 +1,15 @@
+$red: #DE0202;
+
+p, h1, h2, h3, h4, h5 {
+  font-family: arial;
+}
+
 .site-container {
-  margin-top: 70px;
+  margin-top: 50px;
   width: auto;
 }
 
 .books-horizontal-scroll-container {
-  margin-top: 70px;
   width: auto;
   overflow-x: scroll;
   overflow-y: hidden;
@@ -18,6 +23,51 @@
 .each-book-container {
   float: left;
   margin-left: 20px;
+}
+
+.book-image-container {
+  box-shadow: 1px 1px 1px #E2E2E2;
+
+  img {
+    width: 120px;
+    height: 160px;
+  }
+}
+
+.tags-container {
+  span {
+    margin-right: 7px;
+  }
+}
+
+.book-details-container {
+  padding: 0px 12px;
+  width: 188px;
+  height: 160px;
+  position: relative;
+  overflow: hidden;
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  h2 {
+    color: $red;
+    font-size: 18px;
+    font-weight: border;
+  }
+
+  .book_isbn ,
+  .book_author {
+    font-size: 12px;
+    word-wrap: break-word;
+  }
+}
+
+.book-details-container,
+.book-image-container {
+  float: left;
 }
 
 .button {
@@ -35,7 +85,7 @@
   width: 200px;
   height: 65px;
   text-align: center;
-  margin: 10px;
+  margin: auto;
 }
 .drop-box:before {
   content: '';
@@ -50,6 +100,7 @@
 
 .upload_file_btn_container {
   position: relative;
+  top: 20px;
 }
 
 .file_input {
@@ -65,8 +116,17 @@ body {
 
 .book-container {
   background-color: #fff;
-  padding: 10px;
-  width: 200px;
+  width: 310px;
+  height: 160px;
+  border: solid 1px #DEDEDE;
+  overflow: hidden;
+  box-shadow: 1px 1px 1px #D0D0D0;
+
+  .tags-container {
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 15px;
+  }
 }
 
 .categories-side-bar {
@@ -75,4 +135,49 @@ body {
   padding: 16px;
   float: left;
   margin-right: 30px;
+}
+
+.navbar-default {
+  background: #fff;
+}
+
+.cover-container {
+  height: 400px;
+  background-image: url(/images/books_cover.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  display: table;
+  width: 100%;
+
+  .search-bar-container {
+    display: table-cell;
+    vertical-align: middle;
+
+    h1 {
+      text-align: center;
+      font-family: arial;
+      color: #fff;
+      text-shadow: 0px 2px 2px #000;
+    }
+
+    .form-control {
+      width: 500px;
+      margin: auto;
+    }
+  }
+}
+
+.form-container {
+  .tags-container {
+    margin: 20px 0px;
+  }
+}
+
+.categories-container {
+  .each-category {
+    h1 {
+      margin-left: 60px;
+    }
+  }
 }

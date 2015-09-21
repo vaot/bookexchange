@@ -2,10 +2,12 @@ app = angular.module "bookexchange"
 
 app.controller "NavigationController", [
   "$scope"
-  ($scope) ->
-    $scope.tag = {}
-    $scope.tag.predicates = []
-    $scope.setPredicate = (tag) ->
-      console.log "oiiiiiiiiiiiiiiiiiiiiiiiii"
-      $scope.tag.predicates.push tag
+  "$rootScope"
+  "UserService"
+  ($scope, $rootScope, UserService) ->
+    $scope.currentUser = UserService.currentUser()
+
+    $scope.currentUser.canEdit = (book) ->
+      return false unless book?
+      $scope.currentUser.logged_in && ($scope.currentUser.id == book.user_id)
 ]

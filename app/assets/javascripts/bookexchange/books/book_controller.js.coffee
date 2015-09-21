@@ -6,16 +6,30 @@ app.controller "BookController", [
   'BookService'
   '$state'
   '$upload'
-  ($scope, bookResource, BookService, $state, $upload) ->
-    $scope.book = bookResource.book
+  'UserService'
+  ($scope, bookResource, BookService, $state, $upload, UserService) ->
+
+    $scope.book = if bookResource.book then bookResource.book else {}
 
     $scope.create = ->
-      BookService.save($scope.book).$promise.then (data) ->
-        $scope.books.push data.book
+      BookService.save(angular.extend($scope.book, {
+        user_id: UserService.currentUser().id
+      })).$promise.then (data) ->
+        $state.go('books.index')
+
+    $scope.update = ->
+      BookService.update($scope.book).$promise.then (data) ->
         $state.go('books.index')
 
     $scope.$watch 'files', ->
       $scope.upload($scope.files)
+
+    $scope.addTag = (tag, book = null) ->
+      book = if book then book else $scope.book
+      book.tags ?= []
+
+      if book.tags.indexOf(tag) is -1
+        book.tags.push(tag)
 
     $scope.upload = (files) ->
       if files && files.length
@@ -26,7 +40,7 @@ app.controller "BookController", [
               fileFormDataName: 'attachment'
           }).progress((evt)->
               progressPercentage = parseInt(100.0 * evt.loaded / evt.total)
-              console.log('progress: ' + progressPercentage + '% ' + evt.config.file.name)
+              console.log('progress: ' + progressPercentage)
           ).success((data, status, headers, config) ->
             $scope.book.book_cover =
               id: data.id

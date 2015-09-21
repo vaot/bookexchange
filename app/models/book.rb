@@ -1,3 +1,27 @@
 class Book < ActiveRecord::Base
   has_one :cover, dependent:  :destroy, as: :owner, class_name: "Media::BookCover"
+  belongs_to :user
+
+  has_many :bids, as: :owner
+
+  serialize :tags, Array
+
+  after_update :update_tags, if: -> { tags_changed? }
+
+  VISIBILITY_TYPES = {
+    public: 'public'
+  }
+
+  scope :public_visible, -> { where(visibility: VISIBILITY_TYPES[:public]) }
+  scope :newly_added, -> { order("created_at DESC") }
+
+  def self.scope_by_tags(tags)
+    self.where(id: FastTagging::Books.retrieve(tags))
+  end
+
+  def update_tags
+    service = FastTagging::Books.new(self)
+    service.remove(tags_was)
+    service.add(tags)
+  end
 end
