@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   has_many :books
   has_many :bids
   has_many :auth_keys, as: :owner
+  has_many :notifications, as: :owner
 
 
   def self.from_omniauth(auth)

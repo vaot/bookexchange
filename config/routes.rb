@@ -11,6 +11,9 @@ Rails.application.routes.draw do
       resources :books
       resources :medias
       resources :bids
+      resources :notifications
+
+      get "search", to: "search#search"
     end
   end
 

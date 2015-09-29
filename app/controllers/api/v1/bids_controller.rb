@@ -11,7 +11,7 @@ class Api::V1::BidsController < ApplicationController
     if bid.persisted?
       render json: bid, serializer: BidSerializer
     else
-      render json: { error: "Couldnt Place Bid" }, status: :unprocessable_entity
+      render json: { error: "Couldn't Place Bid" }, status: :unprocessable_entity
     end
   end
 

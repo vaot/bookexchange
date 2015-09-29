@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150921035906) do
+ActiveRecord::Schema.define(version: 20150929050421) do
 
   create_table "auth_keys", force: true do |t|
     t.integer  "owner_id"
@@ -65,6 +65,17 @@ ActiveRecord::Schema.define(version: 20150921035906) do
 
   add_index "media", ["owner_id"], name: "index_media_on_owner_id"
   add_index "media", ["owner_type"], name: "index_media_on_owner_type"
+
+  create_table "notifications", force: true do |t|
+    t.integer  "owner_id"
+    t.string   "owner_type"
+    t.string   "message"
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "notifications", ["owner_id"], name: "index_notifications_on_owner_id"
 
   create_table "taggings", force: true do |t|
     t.integer  "tag_id"

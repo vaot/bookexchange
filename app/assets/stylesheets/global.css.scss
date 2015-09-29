@@ -181,3 +181,20 @@ body {
     }
   }
 }
+
+.fast-search {
+  position: relative;
+  width: 500px;
+  margin: auto;
+
+  .fast-search-box {
+    background-color: #fff;
+    border-radius: 4px;
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+  }
+}

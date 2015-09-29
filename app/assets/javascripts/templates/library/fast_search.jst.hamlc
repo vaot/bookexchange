@@ -1,0 +1,5 @@
+%input.form-control(type="text" ng-keydown="liveSearch()" ng-model="searchQuery")
+.fast-search-box
+  %ul
+    %li(ng-repeat="book in searchResults")
+      {{book.title}}

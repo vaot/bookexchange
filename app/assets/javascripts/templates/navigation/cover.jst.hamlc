@@ -1,4 +1,4 @@
 .cover-container
   .search-bar-container
     %h1 Buy, Sell & Trade Textbooks
-    %input.form-control(type="text" ng-model="searchBook")
+    .fast-search(fast-search="true")

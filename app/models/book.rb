@@ -1,4 +1,7 @@
 class Book < ActiveRecord::Base
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
+
   has_one :cover, dependent:  :destroy, as: :owner, class_name: "Media::BookCover"
   belongs_to :user
 
@@ -23,5 +26,11 @@ class Book < ActiveRecord::Base
     service = FastTagging::Books.new(self)
     service.remove(tags_was)
     service.add(tags)
+  end
+
+  def as_indexed_json(options = {})
+    self.as_json(
+      only: %i(title author isbn tags)
+    )
   end
 end
