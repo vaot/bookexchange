@@ -2,4 +2,7 @@
 .fast-search-box
   %ul
     %li(ng-repeat="book in searchResults")
-      {{book.title}}
+      .search-result-each(ui-sref="books.show({id: book.id})")
+        %img(src="{{ book.cover_url }}")
+        {{book.title}}
+        {{book.isbn}}

@@ -190,6 +190,8 @@ body {
   .fast-search-box {
     background-color: #fff;
     border-radius: 4px;
+    position: absolute;
+    z-index: +1;
 
     ul {
       list-style: none;
