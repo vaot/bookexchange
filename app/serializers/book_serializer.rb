@@ -4,7 +4,10 @@ class BookSerializer < ActiveModel::Serializer
 
   def cover_url
     if object.cover
-      object.cover.attachment(:small)
+      {
+        small: object.cover.attachment(:small),
+        medium: object.cover.attachment(:medium)
+      }
     end
   end
 end

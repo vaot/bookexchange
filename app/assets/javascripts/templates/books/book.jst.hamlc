@@ -1,6 +1,6 @@
 .book-container.clearfix(ui-sref="books.show({id: book.id})")
   .book-image-container
-    %img(src="{{ book.cover_url }}")
+    %img(src="{{ book.cover_url.small }}")
   .book-details-container
     %ul
       %li
