@@ -5,7 +5,7 @@
         %label.sr-only Amount (in dollars)
         .input-group
           .input-group-addon $
-          %input.form-control(type="text" placeholder="Amount")
+          %input.form-control(type="text" ng-model="bid.price" placeholder="Amount")
           .input-group-addon .00
         %button.btn.btn-danger(ng-click="create()") Place Bid
 
