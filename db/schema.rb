@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150929050421) do
+ActiveRecord::Schema.define(version: 20151003180442) do
 
   create_table "auth_keys", force: true do |t|
     t.integer  "owner_id"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20150929050421) do
     t.integer  "user_id"
     t.string   "visibility",        default: "public", null: false
     t.text     "tags"
+    t.string   "description"
   end
 
   add_index "books", ["user_id"], name: "index_books_on_user_id"

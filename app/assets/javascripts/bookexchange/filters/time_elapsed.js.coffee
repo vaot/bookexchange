@@ -8,22 +8,22 @@ app.filter 'timeElapsed', ->
     difference = (new Date() - jsTime)/1000
 
     # get seconds
-    seconds = Math.round(difference % 60);
+    seconds = Math.round(difference % 60)
 
     # remove seconds from the date
-    difference = Math.floor(difference / 60);
+    difference = Math.floor(difference / 60)
 
     # get minutes
-    minutes = Math.round(difference % 60);
+    minutes = Math.round(difference % 60)
 
     # remove minutes from the date
-    difference = Math.floor(difference / 60);
+    difference = Math.floor(difference / 60)
 
     # get hours
-    hours = Math.round(difference % 24);
+    hours = Math.round(difference % 24)
 
     # remove hours from the date
-    difference = Math.floor(difference / 24);
+    difference = Math.floor(difference / 24)
 
     # the rest of timeDiff is number of days
     days = difference
