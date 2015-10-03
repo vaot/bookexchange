@@ -1,4 +1,21 @@
+.row
+  .col-sm-6
+    .form-inline
+      .form-group
+        %label.sr-only Amount (in dollars)
+        .input-group
+          .input-group-addon $
+          %input.form-control(type="text" ng-model="bid.price" placeholder="Amount")
+          .input-group-addon .00
+        %button.btn.btn-danger(ng-click="create()") Place Bid
+
+
 %h1 Bids
-.row(ng-repeat="bid in bids")
+.row.bid-row(ng-repeat="bid in bids")
   .col-md-12
-    {{bid.user.first_name}} {{bid.price}}
+    .bid-container
+      %a(href="#")
+        User {{$index+1}}
+      ${{ bid.price }}
+      %span
+        {{bid.created_at | timeElapsed }}

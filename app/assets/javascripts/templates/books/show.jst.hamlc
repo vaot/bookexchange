@@ -1,10 +1,17 @@
-.container
+.container.book-show
   .row
-    .col-md-6
-      %div(ng-include="'/templates/books/book.html'")
-      .form-group
-        %label Place a bid
-        %input.form-control(type="number" ng-model="bid.price")
-        %button.btn.btn-primary(ng-click="create()") Save
-    .col-md-6
-      %div(ui-view="bids")
+    .col-md-8
+      .book-show-card-container.clearfix
+        .book-show-image
+          %img(ng-src="{{book.cover_url.medium}}")
+        .book-show-details
+          %h1 {{ book.title }}
+          %span {{ book.author }}
+          %p
+            %span ISBN:
+            {{ book.isbn }}
+        .book-show-buy-now
+          %a.btn.btn-warning(href="#") Buy it for $2000
+
+      .book-bids-card-container
+        %div(ui-view="bids")

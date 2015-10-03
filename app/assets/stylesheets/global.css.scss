@@ -181,3 +181,97 @@ body {
     }
   }
 }
+
+.fast-search {
+  position: relative;
+  width: 500px;
+  margin: auto;
+
+  .fast-search-box {
+    background-color: #fff;
+    border-radius: 4px;
+    position: absolute;
+    z-index: +1;
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+  }
+}
+
+
+// Show page
+.container.book-show {
+  padding-top: 40px;
+}
+
+.book-show-card-container {
+  background: #fff;
+  border: solid 1px #DEDEDE;
+  overflow: hidden;
+  box-shadow: 1px 1px 1px #D0D0D0;
+  position: relative;
+
+  .book-show-buy-now {
+    text-align: right;
+    margin-right: 20px;
+    margin-top: 20px;
+  }
+
+  .book-show-image {
+    height: 220px;
+    overflow: hidden;
+    float: left;
+
+    img {
+      width: 200px;
+    }
+  }
+
+  .book-show-details {
+    float: left;
+    margin-left: 20px;
+
+    p {
+      position: absolute;
+      bottom: 0;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: $red;
+    }
+  }
+}
+
+.book-bids-card-container {
+  background: #fff;
+  border: solid 1px #DEDEDE;
+  overflow: hidden;
+  box-shadow: 1px 1px 1px #D0D0D0;
+  position: relative;
+  padding: 18px;
+
+  .form-inline {
+    margin-top: 20px;
+  }
+}
+
+.bid-container {
+  position: relative;
+
+  span {
+    position: absolute;
+    right: 0;
+  }
+
+  &:hover {
+    background-color: #fafafa;
+  }
+}
+
+.bid-row {
+  margin-bottom: 10px;
+}

@@ -7,9 +7,29 @@ app.controller "BookController", [
   '$state'
   '$upload'
   'UserService'
-  ($scope, bookResource, BookService, $state, $upload, UserService) ->
+  '$http'
+  'GoogleSearch'
+  (
+    $scope,
+    bookResource,
+    BookService,
+    $state,
+    $upload,
+    UserService,
+    $http,
+    GoogleSearch
+  ) ->
 
     $scope.book = if bookResource.book then bookResource.book else {}
+    $scope.isbnLookUp ?= {}
+
+    $scope.searchBookByIsbn = (isbn) ->
+      GoogleSearch.by_isbn(isbn).then (result) ->
+        $scope.isbnLookUp.results = result.data.items
+
+    $scope.setBookDetails = (bookDetails) ->
+      BookService.copyFromGoogle($scope, bookDetails)
+      $scope.isbnLookUp.done = true
 
     $scope.create = ->
       BookService.save(angular.extend($scope.book, {

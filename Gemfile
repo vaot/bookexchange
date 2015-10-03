@@ -29,9 +29,12 @@ gem 'redis-namespace'
 
 gem 'will_paginate', '~> 3.0.6'
 
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
+
 group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
+  gem 'spring', '~> 1.4.0'
   gem 'pry'
 end
 
