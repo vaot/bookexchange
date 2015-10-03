@@ -1,6 +1,6 @@
 class Api::V1::BooksController < ApplicationController
 
-  before_filter :ensure_auth_key_present, except: [:index]
+  before_filter :ensure_auth_key_present, except: [:show, :index]
   before_filter :ensure_genuine_user, only: [:create, :update]
 
   def index
@@ -9,12 +9,19 @@ class Api::V1::BooksController < ApplicationController
 
   def create
     @book = Book.new(book_params)
-    @book.cover = media
+
+    if params[:book_cover].present?
+      @book.cover = media
+    elsif params[:cover_url]
+      @book.cover = Media::BookCover.new.tap do |new_media|
+        new_media.attachment_remote_url = params[:cover_url][:medium]
+      end
+    end
 
     if @book.save
       render json: @book, serializer: BookSerializer
     else
-      render status: :bad_request
+      render json: { errors: notification.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
@@ -58,6 +65,7 @@ class Api::V1::BooksController < ApplicationController
       :show_offers,
       :accept_offers,
       :user_id,
+      :description,
       tags: []
     )
   end

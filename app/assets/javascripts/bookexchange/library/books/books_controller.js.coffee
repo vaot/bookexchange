@@ -7,6 +7,7 @@ app.controller 'BookController', [
   'BooksService'
   'Upload'
   'UserService'
+  'GoogleBooksService'
   (
     $scope
     $state
@@ -14,9 +15,20 @@ app.controller 'BookController', [
     BooksService
     Upload
     UserService
+    GoogleBooksService
   ) ->
 
     $scope.book = bookResource.book ? {}
+
+    $scope.isbnLookUp ?= {}
+
+    $scope.search = (query) ->
+      GoogleBooksService.search(query).then (response) ->
+        $scope.isbnLookUp.results = response.data.items
+
+    $scope.setBookDetails = (info) ->
+      BooksService.copyFromGoogle($scope.book, info)
+      $scope.isbnLookUp.done = true
 
     $scope.create = ->
       angular.extend($scope.book, user_id: UserService.currentUser('id'))
