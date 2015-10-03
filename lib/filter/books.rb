@@ -1,7 +1,7 @@
 module Filter
   class Books
 
-    FILTERS = %w(popular newly_added)
+    FILTERS = %w(popular recent)
 
     def initialize(user, params)
       @user = user

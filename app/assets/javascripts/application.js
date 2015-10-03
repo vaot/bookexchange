@@ -11,6 +11,6 @@
 // about supported directives.
 //
 //= require hamlcoffee
-//= require_tree ./templates/.
 //= require bookexchange/init
 //= require_tree ./bookexchange
+//= require_tree ./utilities

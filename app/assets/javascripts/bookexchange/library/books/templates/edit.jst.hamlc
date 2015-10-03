@@ -1,0 +1,11 @@
+.container.book-edit
+  %div(ng-include="'/bookexchange/library/books/templates/form.html'")
+  .row
+    .col-sm-5
+      .button-nanuk(ng-click="update()")
+        %span U
+        %span p
+        %span d
+        %span a
+        %span t
+        %span e

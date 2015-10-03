@@ -55,7 +55,6 @@ class Api::V1::BooksController < ApplicationController
       :title,
       :author,
       :isbn,
-      :auctioning_enable,
       :show_offers,
       :accept_offers,
       :user_id,

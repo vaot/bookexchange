@@ -1,3 +1,0 @@
-.categories-container
-  .each-category(ng-repeat="filter in [{label: 'Popular Trades', type: 'popular_section'}, {label: 'Recently Added', type: 'newly_added'}]")
-    %div(ui-view="{{filter.type}}")
