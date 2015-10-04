@@ -12,5 +12,5 @@ app.directive 'bookCategory', [
       # BooksService.query(filter: scope.category.filter).then (result) ->
       #   $scope.books = result
       #   debugger
-    templateUrl: '/bookexchange/library/book_category/book_category.html'
+    templateUrl: '/bookexchange/library/book_category/category.html'
 ]

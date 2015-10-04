@@ -1,15 +1,15 @@
 app = angular.module 'bookexchange'
 
-app.controller 'BidsController', [
+app.controller 'BookBidsController', [
   '$scope'
-  'BookBids'
+  'bidsResource'
   'BookBidsService'
   (
     $scope
-    BookBids
+    bidsResource
     BookBidsService
   ) ->
-    $scope.bids = BookBids || []
+    $scope.bids = bidsResource || []
 
     $scope.create = ->
       params = angular.extend(book_id: $scope.book.id, $scope.bid)

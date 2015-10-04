@@ -55,16 +55,11 @@
               %button.btn.btn-default(type="button" ng-click="addTag(tag, book)")
                 Add
 
-    .col-sm-4.text-center
+    .col-sm-4.text-center(ng-if="isbnLookUp.done || isbnLookUp.notFound")
       .form-group
         %h4
           Upload a book cover
-      .file-upload-drop-box(ngf-drop="upload($files)"
-                            ng-model="book.cover_url"
-                            drag-over-class="dragover"
-                            ng-multiple="true"
-                            allow-dir="true"
-                            accept="image/*,application/pdf")
+      .file-upload-drop-box(ngf-drop="upload($files)" ng-model="book.cover_url" accept="image/*")
         Drop Here
 
       .button-nanuk.file-upload-button
