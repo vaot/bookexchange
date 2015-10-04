@@ -10,12 +10,13 @@ class Book < ActiveRecord::Base
   serialize :tags, Array
 
   after_update :update_tags, if: -> { tags_changed? }
+  after_create :download_cover_url, if: -> { cover_url.present? }
 
   VISIBILITY_TYPES = {
     public: 'public'
   }
 
-  scope :public_visible, -> { where(visibility: VISIBILITY_TYPES[:public]) }
+  scope :public_visible, -> { where(visibility: 'public') }
   scope :recent, -> { order("created_at DESC") }
 
   def self.scope_by_tags(tags)
@@ -29,8 +30,10 @@ class Book < ActiveRecord::Base
   end
 
   def as_indexed_json(options = {})
-    self.as_json(
-      only: %i(title author isbn tags)
-    )
+    self.as_json(only: %i(title author isbn tags))
+  end
+
+  def download_cover_url
+    CoverUrlDownloadJob.perform_async(self.id, cover_url)
   end
 end

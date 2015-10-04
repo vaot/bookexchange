@@ -59,7 +59,7 @@
       .form-group
         %h4
           Upload a book cover
-      .file-upload-drop-box(ngf-drop="upload($files)" ng-model="book.cover_url" accept="image/*")
+      .file-upload-drop-box(ngf-drop="upload($files)" accept="image/*")
         Drop Here
 
       .button-nanuk.file-upload-button

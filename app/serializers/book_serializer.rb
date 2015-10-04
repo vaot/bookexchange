@@ -3,11 +3,9 @@ class BookSerializer < ActiveModel::Serializer
              :show_offers, :tags, :user_id, :description
 
   def cover_url
-    if object.cover
-      {
-        small: object.cover.attachment(:small),
-        medium: object.cover.attachment(:medium)
-      }
-    end
+    {
+      small:  object.cover.try(:attachment, :small) || object.cover_url,
+      medium: object.cover.try(:attachment, :medium) || object.cover_url
+    }
   end
 end

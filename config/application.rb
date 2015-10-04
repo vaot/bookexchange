@@ -2,6 +2,10 @@ require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
 
+# https://github.com/netzpirat/haml_coffee_assets/issues/128#issuecomment-99666823
+require 'action_view'
+require 'action_view/template/resolver'
+
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)

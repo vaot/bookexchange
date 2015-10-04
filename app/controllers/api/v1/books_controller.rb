@@ -12,10 +12,8 @@ class Api::V1::BooksController < ApplicationController
 
     if params[:book_cover].present?
       @book.cover = media
-    elsif params[:cover_url]
-      @book.cover = Media::BookCover.new.tap do |new_media|
-        new_media.attachment_remote_url = params[:cover_url][:medium]
-      end
+    elsif params[:cover_url].present?
+      @book.cover_url = params[:cover_url][:medium]
     end
 
     if @book.save

@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
 
   root to: 'books#index'
@@ -7,6 +9,8 @@ Rails.application.routes.draw do
   devise_scope :user do
     get 'sign_out', to: 'devise/sessions#destroy', as: :destroy_user_session
   end
+
+  mount Sidekiq::Web => '/sidekiq'
 
   namespace :api do
     namespace :v1 do
