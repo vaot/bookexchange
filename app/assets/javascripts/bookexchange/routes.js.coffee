@@ -1,11 +1,11 @@
-app = angular.module "bookexchange"
+app = angular.module 'bookexchange'
 
 app.run [
   '$templateCache'
   ($templateCache) ->
     angular.forEach JST,
       (template, template_name) ->
-        this.put "/#{template_name}.html", template({})
+        @put "/#{template_name}.html", template({})
       , $templateCache
 ]
 
@@ -29,102 +29,86 @@ app.config [
       .state 'books',
         abstract: true
         controller: 'NavigationController'
-        templateUrl: '/templates/navigation/index.html'
+        templateUrl: '/bookexchange/library/navigation/navigation.html'
 
       .state 'books.index',
-        url: '/books'
+        url: '/'
         views:
           '':
-            templateUrl: '/templates/books/index.html'
-
+            templateUrl: '/bookexchange/library/books/templates/index.html'
+            controller: 'BookCategoryController'
           'cover@books':
-            templateUrl: '/templates/navigation/cover.html'
+            templateUrl: '/bookexchange/library/navigation/cover.html'
 
-          'popular_section@books.index':
-            templateUrl: '/templates/categories/index.html'
-            controller: 'BookIndexController'
-            resolve:
-              books: [
-                "BookService"
-                (BookService) ->
-                  BookService.query(tags: 'sfu').$promise
-              ]
-
-          'newly_added@books.index':
-            templateUrl: '/templates/categories/index.html'
-            controller: 'BookIndexController'
-            resolve:
-              books: [
-                "BookService"
-                (BookService) ->
-                  BookService.query(filter: 'newly_added').$promise
-              ]
+      .state 'books.index2',
+        url: '/books'
+        controller: ($state) -> $state.go('books.index')
 
       .state 'books.new',
         url: '/books/new'
-        templateUrl: '/templates/books/new.html'
+        templateUrl: '/bookexchange/library/books/templates/new.html'
         controller: 'BookController'
         resolve:
           bookResource: -> {}
 
       .state 'books.edit',
         url: '/books/:id/edit'
-        templateUrl: '/templates/books/edit.html'
+        templateUrl: '/bookexchange/library/books/templates/edit.html'
         controller: 'BookController'
         resolve:
           bookResource: [
-            "BookService"
+            'BooksResource'
             '$stateParams'
-            (BookService, $stateParams) ->
-              BookService.get(id: $stateParams.id).$promise
+            (BooksResource, $stateParams) ->
+              BooksResource.get(id: $stateParams.id).$promise
           ]
 
       .state 'books.show',
         url: '/books/:id'
         views:
           '':
-            templateUrl: '/templates/books/show.html'
+            templateUrl: '/bookexchange/library/books/templates/show.html'
             controller: 'BookController'
             resolve:
               bookResource: [
-                "BookService"
-                "$stateParams"
-                (BookService, $stateParams) ->
-                  BookService.get(id: $stateParams.id).$promise
+                'BooksResource'
+                '$stateParams'
+                (BooksResource, $stateParams) ->
+                  BooksResource.get(id: $stateParams.id).$promise
               ]
           'bids@books.show':
-            templateUrl: '/templates/bids/index.html'
-            controller: 'BidsController'
+            templateUrl: '/bookexchange/library/book_bids/book_bids.html'
+            controller: 'BookBidsController'
             resolve:
               bidsResource: [
-                "BidsService"
-                "$stateParams"
-                (BidsService, $stateParams) ->
-                  BidsService.query(book_id: $stateParams.id).$promise
+                '$stateParams'
+                'BookBidsResource'
+                ($stateParams, BookBidsResource) ->
+                  BookBidsResource.query(book_id: $stateParams.id).$promise
               ]
 
       .state 'users',
         abstract: true
         controller: 'NavigationController'
-        templateUrl: '/templates/navigation/index.html'
+        templateUrl: '/bookexchange/library/navigation/navigation.html'
 
       .state 'users.show',
         url: '/users/:id'
         controller: 'UserController'
-        templateUrl: '/templates/user/show.html'
+        templateUrl: '/bookexchange/library/user/show.html'
         resolve:
-          books: -> []
+          userBooksResource: -> []
 
       .state 'users.books',
         url: '/users/:id/books'
         controller: 'UserController'
-        templateUrl: '/templates/user/books.html'
+        templateUrl: '/bookexchange/library/user/books.html'
         resolve:
-          books: [
-            "BookService"
-            "$stateParams"
-            (BookService, $stateParams) ->
-              BookService.query(user_id: $stateParams.id).$promise
+          userBooksResource: [
+            'BooksResource'
+            '$stateParams'
+            (BooksResource, $stateParams) ->
+              BooksResource.query(user_id: $stateParams.id).$promise
           ]
 
 ]

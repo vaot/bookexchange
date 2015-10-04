@@ -1,132 +1,21 @@
-$red: #DE0202;
-
-p, h1, h2, h3, h4, h5 {
-  font-family: arial;
-}
-
-.site-container {
-  margin-top: 50px;
-  width: auto;
-}
-
-.books-horizontal-scroll-container {
-  width: auto;
-  overflow-x: scroll;
-  overflow-y: hidden;
-  white-space: nowrap;
-}
-
-.each-book-list-wrapper {
-  list-style: none;
-}
-
-.each-book-container {
-  float: left;
-  margin-left: 20px;
-}
-
-.book-image-container {
-  box-shadow: 1px 1px 1px #E2E2E2;
-
-  img {
-    width: 120px;
-    height: 160px;
-  }
-}
-
-.tags-container {
-  span {
-    margin-right: 7px;
-  }
-}
-
-.book-details-container {
-  padding: 0px 12px;
-  width: 188px;
-  height: 160px;
-  position: relative;
-  overflow: hidden;
-
-  ul {
-    list-style: none;
-    padding: 0;
-  }
-
-  h2 {
-    color: $red;
-    font-size: 18px;
-    font-weight: border;
-  }
-
-  .book_isbn ,
-  .book_author {
-    font-size: 12px;
-    word-wrap: break-word;
-  }
-}
-
-.book-details-container,
-.book-image-container {
-  float: left;
-}
-
-.button {
-  -moz-appearance: button;
-  /* Firefox */
-  -webkit-appearance: button;
-  /* Safari and Chrome */
-  padding: 10px;
-  margin: 10px;
-  width: 70px;
-}
-.drop-box {
-  background: #F8F8F8;
-  border: 5px dashed #DDD;
-  width: 200px;
-  height: 65px;
-  text-align: center;
-  margin: auto;
-}
-.drop-box:before {
-  content: '';
-  display: inline-block;
-  height: 100%;
-  vertical-align: middle;
-  margin-right: -0.25em; /* Adjusts for spacing */
-}
-.dragover {
-  border: 5px dashed blue;
-}
-
-.upload_file_btn_container {
-  position: relative;
-  top: 20px;
-}
-
-.file_input {
-  position: absolute;
-  left: 0;
-  top: 0;
-  opacity: 0;
-}
+// TODO: Refactor. No Global bullshit
+@import 'variables';
+@import 'buttons';
 
 body {
+  font-family: 'Roboto Condensed';
   background-color: #e5e5e5;
 }
 
-.book-container {
-  background-color: #fff;
-  width: 310px;
-  height: 160px;
-  border: solid 1px #DEDEDE;
-  overflow: hidden;
-  box-shadow: 1px 1px 1px #D0D0D0;
+img {
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+}
 
-  .tags-container {
-    position: absolute;
-    bottom: 0;
-    margin-bottom: 15px;
-  }
+.site-container {
+  padding: 60px 0 0;
+  width: auto;
 }
 
 .categories-side-bar {
@@ -135,43 +24,6 @@ body {
   padding: 16px;
   float: left;
   margin-right: 30px;
-}
-
-.navbar-default {
-  background: #fff;
-}
-
-.cover-container {
-  height: 400px;
-  background-image: url(/images/books_cover.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-  display: table;
-  width: 100%;
-
-  .search-bar-container {
-    display: table-cell;
-    vertical-align: middle;
-
-    h1 {
-      text-align: center;
-      font-family: arial;
-      color: #fff;
-      text-shadow: 0px 2px 2px #000;
-    }
-
-    .form-control {
-      width: 500px;
-      margin: auto;
-    }
-  }
-}
-
-.form-container {
-  .tags-container {
-    margin: 20px 0px;
-  }
 }
 
 .categories-container {
@@ -201,77 +53,277 @@ body {
   }
 }
 
+//
+// Navbar
+//
+.navbar {
+  border: none;
+  padding: 5px 0;
+  background-color: rgba(0, 86, 100, .88);
 
-// Show page
-.container.book-show {
-  padding-top: 40px;
+  &.navbar-default {
+    .navbar-brand {
+      color: white;
+    }
+
+    .navbar-nav > li > a {
+      color: white;
+    }
+  }
 }
 
-.book-show-card-container {
-  background: #fff;
-  border: solid 1px #DEDEDE;
-  overflow: hidden;
-  box-shadow: 1px 1px 1px #D0D0D0;
+//
+// Cards
+//
+.card-space {
+  display: block;
+  height: 40px;
+  width: 100%;
+}
+
+.card {
+  padding: 10px;
+  background-color: white;
+  box-shadow: $shadow1;
+}
+
+//
+// Card Containers
+//
+.book-card-container {
+  @include clearfix();
+  box-shadow: $shadow1;
+  background-color: white;
   position: relative;
 
-  .book-show-buy-now {
-    text-align: right;
-    margin-right: 20px;
-    margin-top: 20px;
+  .book-image {
+    float: left;
+    width: 220px;
   }
 
-  .book-show-image {
-    height: 220px;
-    overflow: hidden;
-    float: left;
-
-    img {
-      width: 200px;
-    }
-  }
-
-  .book-show-details {
-    float: left;
-    margin-left: 20px;
-
-    p {
-      position: absolute;
-      bottom: 0;
-    }
+  .book-details {
+    margin-left: 220px;
+    padding: 15px;
 
     h1 {
       font-size: 28px;
       color: $red;
+      margin: 5px 0 10px;
+    }
+
+    .book-author,
+    .book-isbn {
+      font-size: 16px;
+    }
+
+    .buy-book {
+      bottom: 15px;
+      position: absolute;
+      right: 15px;
     }
   }
 }
 
-.book-bids-card-container {
-  background: #fff;
-  border: solid 1px #DEDEDE;
-  overflow: hidden;
-  box-shadow: 1px 1px 1px #D0D0D0;
+.bids-card-container {
+  box-shadow: $shadow1;
+  background-color: white;
   position: relative;
-  padding: 18px;
+  padding: 15px;
 
-  .form-inline {
-    margin-top: 20px;
+  .form-group {
+    max-width: 300px;
+    display: inline-block;
+    margin: 0 15px 0 0;
+    vertical-align: middle;
   }
-}
 
-.bid-container {
-  position: relative;
+  .button-nanuk {
+    vertical-align: middle;
+  }
 
   span {
     position: absolute;
-    right: 0;
+    right: 15px;
+  }
+}
+
+//
+// Forms
+//
+.form-control {
+  border-radius: 0;
+  height: 38px;
+
+  &:focus {
+    border-color: rgba(15, 188, 216, 0.88);
+  }
+}
+
+.input-group-addon {
+  border-radius: 0;
+  min-width: 40px;
+}
+
+//
+// Buttons
+//
+.input-group-btn {
+  .btn {
+    border-radius: 0;
+    height: 38px;
+  }
+}
+
+//
+// File Upload
+//
+.file-upload-button {
+  position: relative;
+
+  input[type="file"] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    opacity: 0;
+    cursor: pointer;
+    width: 100%;
+  }
+}
+
+.file-upload-drop-box {
+  cursor: default;
+  background: white;
+  border: 5px dashed rgb(140, 17, 162);
+  width: 200px;
+  height: 120px;
+  text-align: center;
+  margin: 40px auto;
+
+  &:before {
+    @extend %vertical-content;
+  }
+
+  &.dragover {
+    border: 5px dashed lighten(rgb(140, 17, 162), 15%);
   }
 
   &:hover {
-    background-color: #fafafa;
+    font-weight: bold;
   }
 }
 
-.bid-row {
-  margin-bottom: 10px;
+//
+//
+//
+.cover-container {
+  height: 400px;
+  background-image: url('/images/books_cover.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  display: table;
+  width: 100%;
+
+  .search-bar-container {
+    display: table-cell;
+    vertical-align: middle;
+
+    h1 {
+      text-align: center;
+      font-family: arial;
+      color: #fff;
+      text-shadow: 0px 2px 2px #000;
+    }
+  }
 }
+
+//
+// Books
+//
+.book-show,
+.book-form {
+  margin-top: 40px;
+}
+
+.user-books {
+  margin-top: 40px;
+
+  .col-sm-4:nth-child(n + 4) {
+    margin-top: 30px;
+  }
+}
+
+.book-tags {
+  margin: 20px 0px;
+
+  .label {
+    padding: 3px 5px 4px;
+    display: inline-block;
+
+    &:not(:first-child) {
+      margin-left: 5px;
+    }
+  }
+}
+
+.book-container {
+  background-color: white;
+  overflow: hidden;
+  height: 160px;
+  box-shadow: $shadow1;
+
+  .edit-book {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+  }
+
+  .book-image {
+    height: 100%;
+    float: left;
+    width: 120px;
+
+    &:before {
+      @extend %vertical-content;
+    }
+  }
+
+  .book-details {
+    padding: 15px;
+    height: 160px;
+    position: relative;
+    margin-left: 120px;
+
+    h2 {
+      color: $red;
+      font-size: 18px;
+      font-weight: bold;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      margin: 5px 0 10px;
+      white-space: nowrap;
+    }
+
+    .book-isbn ,
+    .book-author {
+      word-wrap: break-word;
+    }
+  }
+
+  .book-tags {
+    position: absolute;
+    bottom: 0;
+    left: 15px;
+    right: 15px;
+    margin-bottom: 15px;
+  }
+}
+
+
+
+
+
+
+
+

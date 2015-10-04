@@ -16,7 +16,7 @@ class Book < ActiveRecord::Base
   }
 
   scope :public_visible, -> { where(visibility: VISIBILITY_TYPES[:public]) }
-  scope :newly_added, -> { order("created_at DESC") }
+  scope :recent, -> { order("created_at DESC") }
 
   def self.scope_by_tags(tags)
     self.where(id: FastTagging::Books.retrieve(tags))

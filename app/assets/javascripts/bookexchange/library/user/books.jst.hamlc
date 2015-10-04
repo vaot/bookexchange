@@ -1,0 +1,4 @@
+.container.user-books
+  .row
+    .col-sm-4(ng-repeat="book in books")
+      %div(ng-include="'/bookexchange/library/books/templates/book.html'")

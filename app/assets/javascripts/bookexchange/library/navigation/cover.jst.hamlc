@@ -1,0 +1,5 @@
+.cover-container
+  .search-bar-container
+    %h1
+      Buy, Sell & Trade Textbooks
+    .fast-search(fast-search="true")

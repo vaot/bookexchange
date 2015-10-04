@@ -1,0 +1,38 @@
+.container.book-show
+  .row
+    .col-sm-8
+      .book-card-container
+        .book-image
+          %img(ng-src="{{book.cover_url.medium}}")
+        .book-details
+          %h1
+            {{book.title}}
+          .book-isbn
+            %strong
+              ISBN:
+            {{book.isbn}}
+          .book-author
+            %strong
+              Author:
+            {{book.author}}
+          .button-nanuk.buy-book
+            %span B
+            %span u
+            %span y
+            %span &nbsp;
+            %span i
+            %span t
+            %span &nbsp;
+            %span f
+            %span o
+            %span r
+            %span &nbsp;
+            %span $
+            %span 2
+            %span 0
+            %span 0
+            %span 0
+
+      .card-space
+
+      %div(ui-view="bids")

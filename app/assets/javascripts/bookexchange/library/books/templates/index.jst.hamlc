@@ -1,0 +1,3 @@
+.book-categories-container
+  %div(ng-repeat="category in categories")
+    %div(book-category="category")

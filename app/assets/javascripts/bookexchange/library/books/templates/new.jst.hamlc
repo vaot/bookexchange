@@ -1,0 +1,12 @@
+.container.book-new
+  %div(ng-include="'/bookexchange/library/books/templates/form.html'")
+
+  .row(ng-if="isbnLookUp.done || isbnLookUp.notFound")
+    .col-sm-5
+      .button-nanuk(ng-click="create()")
+        %span C
+        %span r
+        %span e
+        %span a
+        %span t
+        %span e

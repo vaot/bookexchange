@@ -18,7 +18,6 @@ class Api::V1::BooksController < ApplicationController
       end
     end
 
-
     if @book.save
       render json: @book, serializer: BookSerializer
     else
@@ -63,7 +62,6 @@ class Api::V1::BooksController < ApplicationController
       :title,
       :author,
       :isbn,
-      :auctioning_enable,
       :show_offers,
       :accept_offers,
       :user_id,

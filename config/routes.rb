@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  devise_for :users, controllers: { omniauth_callbacks: "auth" }
+  root to: 'books#index'
+
+  devise_for :users, controllers: { omniauth_callbacks: 'auth' }
 
   devise_scope :user do
     get 'sign_out', to: 'devise/sessions#destroy', as: :destroy_user_session
@@ -13,10 +15,10 @@ Rails.application.routes.draw do
       resources :bids
       resources :notifications
 
-      get "search", to: "search#search"
+      get 'search', to: 'search#search'
     end
   end
 
   # resources :books
-  get "/*path", to: "books#index"
+  get '/*path', to: 'books#index'
 end

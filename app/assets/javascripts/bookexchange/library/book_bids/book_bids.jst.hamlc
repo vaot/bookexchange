@@ -1,0 +1,29 @@
+.bids-card-container
+  .form-group
+    %label.sr-only
+      Amount (in dollars)
+    .input-group
+      .input-group-addon
+        $
+      %input.form-control(type="text" placeholder="Amount" ng-model="bid.price")
+      .input-group-addon
+        \.00
+  .button-nanuk(ng-click="create()")
+    %span P
+    %span l
+    %span a
+    %span c
+    %span e
+    %span &nbsp;
+    %span B
+    %span i
+    %span d
+
+  %h1
+    Bids
+  .bid(ng-repeat="bid in bids")
+    %a(href="#")
+      User {{$index+1}}
+    ${{bid.price}}
+    %span
+      {{bid.created_at | timeElapsed}}
