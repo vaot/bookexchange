@@ -24,25 +24,22 @@ app.config [
     $locationProvider.html5Mode(true)
     $locationProvider.hashPrefix('!')
 
-    $stateProvider
+    $urlRouterProvider.otherwise('/books')
 
+    $stateProvider
       .state 'books',
         abstract: true
         controller: 'NavigationController'
         templateUrl: '/bookexchange/library/navigation/navigation.html'
 
       .state 'books.index',
-        url: '/'
+        url: '/books'
         views:
           '':
             templateUrl: '/bookexchange/library/books/templates/index.html'
             controller: 'BookCategoryController'
           'cover@books':
             templateUrl: '/bookexchange/library/navigation/cover.html'
-
-      .state 'books.index2',
-        url: '/books'
-        controller: ($state) -> $state.go('books.index')
 
       .state 'books.new',
         url: '/books/new'

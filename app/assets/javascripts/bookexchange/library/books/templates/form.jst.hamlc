@@ -20,8 +20,15 @@
 
       %h3 Or
 
-      %a.btn.btn-primary(href="#" ng-if="!isbnLookUp.done")
-        Dont have the ISBN?
+      .button-nanuk(ng-if="!isbnLookUp.done")
+        %span N
+        %span o
+        %span &nbsp;
+        %span I
+        %span S
+        %span B
+        %span N
+        %span ?
 
       .book-form-container(ng-if="isbnLookUp.done || isbnLookUp.notFound")
         .form-group
@@ -48,7 +55,7 @@
               %button.btn.btn-default(type="button" ng-click="addTag(tag, book)")
                 Add
 
-    .col-sm-4.text-center(ng-if="isbnLookUp.done || isbnLookUp.notFound")
+    .col-sm-4.text-center
       .form-group
         %h4
           Upload a book cover
