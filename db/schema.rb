@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20151003234359) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "auth_keys", force: true do |t|
     t.integer  "owner_id"
     t.datetime "expires_at"
@@ -31,8 +34,8 @@ ActiveRecord::Schema.define(version: 20151003234359) do
     t.integer  "user_id"
   end
 
-  add_index "bids", ["owner_id"], name: "index_bids_on_owner_id"
-  add_index "bids", ["user_id"], name: "index_bids_on_user_id"
+  add_index "bids", ["owner_id"], name: "index_bids_on_owner_id", using: :btree
+  add_index "bids", ["user_id"], name: "index_bids_on_user_id", using: :btree
 
   create_table "books", force: true do |t|
     t.string   "title"
@@ -40,16 +43,17 @@ ActiveRecord::Schema.define(version: 20151003234359) do
     t.string   "isbn"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "accept_offers", default: true
-    t.boolean  "show_offers",   default: true
+    t.boolean  "accept_offers",     default: true
+    t.boolean  "show_offers",       default: true
+    t.boolean  "auctioning_enable", default: true
     t.integer  "user_id"
-    t.string   "visibility",    default: "public", null: false
+    t.string   "visibility",        default: "public", null: false
     t.text     "tags"
     t.string   "description"
   end
 
-  add_index "books", ["user_id"], name: "index_books_on_user_id"
-  add_index "books", ["visibility"], name: "index_books_on_visibility"
+  add_index "books", ["user_id"], name: "index_books_on_user_id", using: :btree
+  add_index "books", ["visibility"], name: "index_books_on_visibility", using: :btree
 
   create_table "media", force: true do |t|
     t.string   "type"
@@ -63,8 +67,8 @@ ActiveRecord::Schema.define(version: 20151003234359) do
     t.string   "owner_type"
   end
 
-  add_index "media", ["owner_id"], name: "index_media_on_owner_id"
-  add_index "media", ["owner_type"], name: "index_media_on_owner_type"
+  add_index "media", ["owner_id"], name: "index_media_on_owner_id", using: :btree
+  add_index "media", ["owner_type"], name: "index_media_on_owner_type", using: :btree
 
   create_table "notifications", force: true do |t|
     t.integer  "owner_id"
@@ -75,7 +79,7 @@ ActiveRecord::Schema.define(version: 20151003234359) do
     t.datetime "updated_at"
   end
 
-  add_index "notifications", ["owner_id"], name: "index_notifications_on_owner_id"
+  add_index "notifications", ["owner_id"], name: "index_notifications_on_owner_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",      default: "", null: false
@@ -88,6 +92,6 @@ ActiveRecord::Schema.define(version: 20151003234359) do
     t.string   "gender"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
 end
