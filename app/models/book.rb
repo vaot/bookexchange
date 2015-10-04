@@ -16,7 +16,7 @@ class Book < ActiveRecord::Base
     public: 'public'
   }
 
-  scope :public_visible, -> { where(visibility: 'public') }
+  scope :public_visible, -> { where(visibility: VISIBILITY_TYPES[:public]) }
   scope :recent, -> { order("created_at DESC") }
 
   def self.scope_by_tags(tags)

@@ -27,7 +27,7 @@ module Filter
         if current_tags.present?
           Book.scope_by_tags(current_tags).paginate(page: @page, per_page: @per_page)
         else
-          Book.public.paginate(page: @page, per_page: @per_page)
+          Book.public_visible.paginate(page: @page, per_page: @per_page)
         end
       end
     end
