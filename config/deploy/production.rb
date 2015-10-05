@@ -4,7 +4,8 @@
 # You can define all roles on a single server, or split them:
 
 server 'ec2-52-10-106-240.us-west-2.compute.amazonaws.com', user: 'deploy', roles: %w{app db web}, primary: true
-server 'ec2-52-10-106-240.us-west-2.compute.amazonaws.com', user: 'deploy', roles: %w{app web}
+set :user, 'ubuntu'
+# server 'ec2-52-10-106-240.us-west-2.compute.amazonaws.com', user: 'deploy', roles: %w{app web}
 # server 'db.example.com', user: 'deploy', roles: %w{db}
 
 
@@ -17,9 +18,10 @@ server 'ec2-52-10-106-240.us-west-2.compute.amazonaws.com', user: 'deploy', role
 # property set. Specify the username and a domain or IP for the server.
 # Don't use `:all`, it's a meta role.
 set :stage, :production
-role :app, %w{deploy@ec2-52-10-106-240.us-west-2.compute.amazonaws.com}
-role :web, %w{deploy@ec2-52-10-106-240.us-west-2.compute.amazonaws.com}
-role :db,  %w{deploy@ec2-52-10-106-240.us-west-2.compute.amazonaws.com}
+set :branch, 'master'
+# role :app, %w{deploy@ec2-52-10-106-240.us-west-2.compute.amazonaws.com}
+# role :web, %w{deploy@ec2-52-10-106-240.us-west-2.compute.amazonaws.com}
+# role :db,  %w{deploy@ec2-52-10-106-240.us-west-2.compute.amazonaws.com}
 
 
 
