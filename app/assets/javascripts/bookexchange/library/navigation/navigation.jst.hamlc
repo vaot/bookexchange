@@ -1,5 +1,5 @@
 %nav.navbar.navbar-default.navbar-fixed-top
-  .navbar-header(navbar-header="true")
+  .navbar-header(navbar-header="true" ng-style="{'background-color': themeColor}")
     %button.navbar-toggle.collapsed{'aria-controls' => 'navbar', 'aria-expanded' => 'false', data: {target: '#navbar', toggle: 'collapse'}}
       %span.sr-only Toggle navigation
       %span.icon-bar

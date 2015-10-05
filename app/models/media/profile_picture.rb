@@ -4,4 +4,10 @@ class Media::ProfilePicture < Media
 
   validates_attachment_content_type :attachment,
     :content_type => %w(image/jpg image/jpeg image/png image/gif)
+
+  after_create :get_dominant_color
+
+  def hex_dominant_color
+    dominant_color || get_dominant_color
+  end
 end

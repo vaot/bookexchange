@@ -19,6 +19,8 @@ gem 'haml'
 gem 'haml_coffee_assets'
 gem 'execjs'
 
+gem 'mini_magick'
+
 # Database
 gem 'pg'
 gem 'rails_12factor'

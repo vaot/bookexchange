@@ -1,4 +1,4 @@
-.navbar-sidebar(ng-class="{'expand-sidebar': expandSidebar}")
+.navbar-sidebar(ng-class="{'expand-sidebar': expandSidebar}" ng-style="{'background-color': themeColor}")
   .navbar-sidebar-container
     %ul
       %li

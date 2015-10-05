@@ -8,6 +8,7 @@ app.controller 'BookController', [
   'Upload'
   'UserService'
   'GoogleBooksService'
+  '$rootScope'
   (
     $scope
     $state
@@ -16,9 +17,11 @@ app.controller 'BookController', [
     Upload
     UserService
     GoogleBooksService
+    $rootScope
   ) ->
 
     $scope.book = bookResource.book ? {}
+    $rootScope.themeColor = $scope.book.dominant_color
 
     $scope.isbnLookUp ?= {}
 

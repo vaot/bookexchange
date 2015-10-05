@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151004010730) do
+ActiveRecord::Schema.define(version: 20151005032921) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 20151004010730) do
     t.datetime "attachment_updated_at"
     t.integer  "owner_id"
     t.string   "owner_type"
+    t.string   "dominant_color"
   end
 
   add_index "media", ["owner_id"], name: "index_media_on_owner_id", using: :btree
