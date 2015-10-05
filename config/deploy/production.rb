@@ -3,8 +3,11 @@
 # Defines a single server with a list of roles and multiple properties.
 # You can define all roles on a single server, or split them:
 
-server 'ec2-52-10-106-240.us-west-2.compute.amazonaws.com', user: 'deploy', roles: %w{app db web}, primary: true
-set :user, 'ubuntu'
+server 'ec2-52-10-106-240.us-west-2.compute.amazonaws.com', {
+  user: 'ubuntu',
+  roles: %w{app db web},
+  primary: true
+}
 # server 'ec2-52-10-106-240.us-west-2.compute.amazonaws.com', user: 'deploy', roles: %w{app web}
 # server 'db.example.com', user: 'deploy', roles: %w{db}
 
