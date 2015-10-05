@@ -26,7 +26,7 @@ gem 'pg'
 gem 'rails_12factor'
 
 group :development do
-    gem 'capistrano',         require: false
+    gem 'capistrano'
     gem 'capistrano-rvm',     require: false
     gem 'capistrano-rails',   require: false
     gem 'capistrano-bundler', require: false
