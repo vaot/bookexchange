@@ -7,7 +7,7 @@ module Filter
       @user = user
       @tags_string = params[:tags]
       @page = params[:page] || 1
-      @per_page = 6
+      @per_page = 24
       @filter = FILTERS.include?(params[:filter]) ? params[:filter] : nil
     end
 
