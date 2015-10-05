@@ -129,19 +129,19 @@ img {
     }
   }
 
+  .triangle-brand {
+    border-top: 28px solid transparent;
+    border-bottom: 22px solid transparent;
+    border-left: 27px solid #0D4644;
+    position: absolute;
+    right: -27px;
+    top: 0px;
+    bottom: 0;
+  }
+
   .navbar-header {
     position: relative;
     background-color: #0D4644;
-
-    &:after {
-      border-top: 28px solid transparent;
-      border-bottom: 22px solid transparent;
-      border-left: 27px solid #0D4644;
-      position: absolute;
-      right: -27px;
-      top: 0px;
-      bottom: 0;
-    }
   }
 
   &.navbar-default {
