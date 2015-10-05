@@ -1,6 +1,6 @@
 .container.book-show
   .row
-    .col-sm-8
+    .col-sm-8.col-sm-offset-1
       .book-card-container
         .book-image
           %img(ng-src="{{book.cover_url.medium}}")

@@ -5,6 +5,7 @@ app.directive 'navbarHeader', [
   ($rootScope) ->
     transclude: true
     link: (scope, element, attributes) ->
+      $rootScope.expandSidebar ?= true
 
       scope.toggleSidebar = ->
         $rootScope.expandSidebar = !$rootScope.expandSidebar

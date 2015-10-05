@@ -14,7 +14,7 @@ img {
 }
 
 .site-container {
-  padding: 60px 0 0;
+  padding: 50px 0 0;
   width: auto;
 }
 
@@ -408,6 +408,7 @@ img {
   background: #0D4644;
   width: 70px;
   transition: width 0.3s;
+  box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.35);
 
   &.expand-sidebar {
     width: 100%;
@@ -425,6 +426,8 @@ img {
     ul {
       list-style: none;
       padding: 0;
+      margin-bottom: 0;
+      margin-top: 0;
 
       li {
         a {
