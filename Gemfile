@@ -23,7 +23,6 @@ gem 'mini_magick'
 
 # Database
 gem 'pg'
-gem 'rails_12factor'
 
 group :development do
     gem 'capistrano'
