@@ -1,9 +1,11 @@
-%input.form-control(type="text" ng-keydown="liveSearch()" ng-model="searchQuery")
+%input.fast-search-input(type="text" placeholder="Search for your textbook" ng-keydown="liveSearch()" ng-model="searchQuery")
 
 .fast-search-box
   %ul
     %li(ng-repeat="result in results")
       .search-result-each(ui-sref="books.show({id: result.id})")
-        %img(src="{{result.cover_url.small}}")
-        {{result.title}}
-        {{result.isbn}}
+        .search-result-image
+          %img(src="{{result.cover_url.small}}")
+        .search-result-details
+          %p {{result.title}}
+          %span {{result.isbn}}

@@ -1,0 +1,17 @@
+.navbar-sidebar(ng-class="{'expand-sidebar': expandSidebar}")
+  .navbar-sidebar-container
+    %ul
+      %li
+        %a(ui-sref="books.index")
+          %i.fa.fa-home
+          %span(ng-if="expandSidebar") Home
+      %li
+        %a(ui-sref="users.books({id: currentUser.id})")
+          %i.fa.fa-book
+          %span(ng-if="expandSidebar") My Books
+      %li
+        %a(ui-sref="users.show({id: currentUser.id})")
+          %i.fa.fa-user
+          %span(ng-if="expandSidebar") Profile
+
+%div(ng-transclude="true")

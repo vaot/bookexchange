@@ -31,9 +31,11 @@ app.controller 'BookController', [
       $scope.isbnLookUp.done = true
 
     $scope.create = ->
+      NProgress.start()
       angular.extend($scope.book, user_id: UserService.currentUser('id'))
 
       BooksService.save($scope.book).then (response) ->
+        NProgress.done()
         $state.go('books.index')
 
     $scope.update = ->

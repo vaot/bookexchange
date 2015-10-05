@@ -8,7 +8,7 @@ app.directive 'bookCategory', [
     scope:
       category: '=bookCategory'
     link: (scope, element, attributes) ->
-      debugger
+      console.log scope.category.filter
       # BooksService.query(filter: scope.category.filter).then (result) ->
       #   $scope.books = result
       #   debugger

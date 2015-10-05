@@ -108,4 +108,16 @@ app.config [
               BooksResource.query(user_id: $stateParams.id).$promise
           ]
 
+      .state 'notifications',
+        abstract: true
+        controller: 'NavigationController'
+        templateUrl: '/templates/navigation/index.html'
+
+      .state 'notifications.new',
+        url: '/notifications/new'
+        controller: 'NotificationsController'
+        templateUrl: '/templates/notifications/new.html'
+        resolve:
+          notification: -> {}
+
 ]

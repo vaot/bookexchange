@@ -1,30 +1,32 @@
 %nav.navbar.navbar-default.navbar-fixed-top
-  .container
-    .navbar-header
-      %button.navbar-toggle.collapsed{'aria-controls' => 'navbar', 'aria-expanded' => 'false', data: {target: '#navbar', toggle: 'collapse'}}
-        %span.sr-only Toggle navigation
-        %span.icon-bar
-        %span.icon-bar
-        %span.icon-bar
-      %a.navbar-brand(ui-sref="books.index")
-        BookExchange
-    #navbar.collapse.navbar-collapse
-      %ul.nav.navbar-nav
-        %li
-          %a(ui-sref="books.new")
-            Post an Offer
-        %li
-          %a(ui-sref="users.books({id: currentUser.id})")
-            My Books
-        %li
-          %a(ui-sref="users.show({id: currentUser.id})")
-            Profile
-      %ul.nav.navbar-nav.pull-right
-        %li.act
-          %a(ng-if="!currentUser.logged_in" href="#" onclick="window.location.replace('/users/auth/facebook')")
-            Login With Facebook
-          %a(ng-if="currentUser.logged_in" href="#" onclick="window.location.replace('/sign_out')")
-            Log out
+  .navbar-header(navbar-header="true")
+    %button.navbar-toggle.collapsed{'aria-controls' => 'navbar', 'aria-expanded' => 'false', data: {target: '#navbar', toggle: 'collapse'}}
+      %span.sr-only Toggle navigation
+      %span.icon-bar
+      %span.icon-bar
+      %span.icon-bar
+    %a.navbar-brand(ng-click="toggleSidebar()")
+      BookExchange
+  #navbar.collapse.navbar-collapse
+    %ul.nav.navbar-nav
+      %li
+        .fast-search(fast-search="true")
+      %li
+        %a(ui-sref="books.new") Post an Offer
+      /     %a(ui-sref="books.new")
+      /       Post an Offer
+      /   %li
+      /     %a(ui-sref="users.books({id: currentUser.id})")
+      /       My Books
+      /   %li
+      /     %a(ui-sref="users.show({id: currentUser.id})")
+      /       Profile
+      / %ul.nav.navbar-nav.pull-right
+      /   %li.act
+      /     %a(ng-if="!currentUser.logged_in" href="#" onclick="window.location.replace('/users/auth/facebook')")
+      /       Login With Facebook
+      /     %a(ng-if="currentUser.logged_in" href="#" onclick="window.location.replace('/sign_out')")
+      /       Log out
 
 .site-container
   %div(ui-view="cover")

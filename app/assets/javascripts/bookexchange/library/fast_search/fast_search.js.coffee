@@ -10,10 +10,17 @@ app.directive 'fastSearch', [
     link: (scope, element, attributes) ->
       searching = null
 
+      angular.element(document.body).bind 'click', ->
+        scope.$apply ->
+          scope.results = []
+          scope.searchQuery = ''
+
       liveSearch = ->
         FastSearchService.search(scope.searchQuery).then (response) ->
           scope.results = response.search
           searching = $timeout.cancel(searching)
+          unless searching
+            searching = null
 
       scope.liveSearch = ->
         searching ?= $timeout(liveSearch, 1000)
