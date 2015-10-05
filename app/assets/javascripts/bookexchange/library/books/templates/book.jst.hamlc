@@ -1,4 +1,4 @@
-.book-container
+.book-container.clearfix
   .book-image(ui-sref="books.show({id: book.id})")
     %img(src="{{book.cover_url.small}}")
   .book-details

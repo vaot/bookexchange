@@ -363,10 +363,6 @@ img {
     height: 100%;
     float: left;
     width: 120px;
-
-    &:before {
-      @extend %vertical-content;
-    }
   }
 
   .book-details {
