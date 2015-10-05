@@ -18,9 +18,8 @@ app.directive 'fastSearch', [
       liveSearch = ->
         FastSearchService.search(scope.searchQuery).then (response) ->
           scope.results = response.search
-          searching = $timeout.cancel(searching)
-          unless searching
-            searching = null
+          $timeout.cancel(searching)
+          searching = null
 
       scope.liveSearch = ->
         searching ?= $timeout(liveSearch, 1000)

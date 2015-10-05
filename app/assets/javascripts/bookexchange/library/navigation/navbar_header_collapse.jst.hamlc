@@ -1,6 +1,6 @@
 %span.triangle-brand(ng-style="{'border-left-color': themeColor}")
-.navbar-sidebar(ng-class="{'expand-sidebar': expandSidebar}" ng-style="{'background-color': themeColor}")
-  .navbar-sidebar-container
+.navbar-sidebar-container(ng-class="{'expand-sidebar': expandSidebar}" ng-style="{'background-color': themeColor}")
+  .navbar-sidebar
     %ul
       %li
         %a(ui-sref="books.index")

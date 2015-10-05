@@ -13,6 +13,8 @@ app.service 'BooksResource', [
     actions =
       update:
         method: 'PUT'
+      delete:
+        method: 'DELETE'
 
     $resource(url, params, actions)
 ]

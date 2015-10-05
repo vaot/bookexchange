@@ -1,0 +1,119 @@
+//
+// Navigation
+//
+
+@import 'variables';
+
+.cover-container {
+  height: 400px;
+  background-image: url('/images/books_cover.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  display: table;
+  width: 100%;
+
+  .search-bar-container {
+    display: table-cell;
+    vertical-align: middle;
+
+    h1 {
+      text-align: center;
+      font-family: arial;
+      color: #fff;
+      text-shadow: 0px 2px 2px #000;
+    }
+  }
+}
+
+.navbar {
+  border: none;
+  background-color: $white;
+  box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.35);
+
+  .fast-search {
+    margin-left: 70px;
+    margin-top: 6px;
+    font-family: arial;
+
+    .fast-search-input {
+      width: 100%;
+    }
+  }
+
+  .triangle-brand {
+    border-top: 28px solid transparent;
+    border-bottom: 22px solid transparent;
+    border-left: 27px solid #0D4644;
+    position: absolute;
+    right: -27px;
+    top: 0px;
+    bottom: 0;
+  }
+
+  .navbar-header {
+    position: relative;
+    background-color: #0D4644;
+  }
+
+  &.navbar-default {
+    .navbar-brand {
+      color: $white;
+      cursor: pointer;
+    }
+  }
+}
+
+.navbar-sidebar-container {
+  position: absolute;
+  top: 50px;
+  background: #0D4644;
+  width: 70px;
+  transition: width 0.3s;
+  box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, .35);
+
+  &.expand-sidebar {
+    width: 100%;
+
+    .navbar-sidebar {
+      li a {
+        .fa {
+          font-size: 24px;
+        }
+      }
+    }
+  }
+
+  .navbar-sidebar {
+    ul {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 0;
+      margin-top: 0;
+
+      li {
+        a {
+          color: white;
+          text-decoration: none;
+          padding: 8px 0 8px 16px;
+          display: inline-block;
+          width: 100%;
+
+          span {
+            margin-left: 10px;
+          }
+
+          .fa {
+            font-size: 30px;
+          }
+
+          &:hover {
+            background-color: white;
+            text-decoration: none;
+            color: #0D4644;
+          }
+        }
+      }
+    }
+  }
+}

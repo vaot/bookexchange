@@ -1,0 +1,41 @@
+//
+// File Upload
+//
+
+@import 'variables';
+
+.file-upload-button {
+  position: relative;
+
+  input[type="file"] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    opacity: 0;
+    cursor: pointer;
+    width: 100%;
+  }
+}
+
+.file-upload-drop-box {
+  cursor: default;
+  background: $white;
+  border: 5px dashed rgb(140, 17, 162);
+  width: 200px;
+  height: 120px;
+  text-align: center;
+  margin: 40px auto;
+
+  &:before {
+    @extend %vertical-content;
+  }
+
+  &.dragover {
+    border: 5px dashed lighten(rgb(140, 17, 162), 15%);
+  }
+
+  &:hover {
+    font-weight: bold;
+  }
+}

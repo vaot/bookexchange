@@ -1,4 +1,4 @@
-class Api::V1::BooksController < ApplicationController
+class Api::V1::BooksController < Api::V1::ApiController
 
   before_filter :ensure_auth_key_present, except: [:show, :index]
   before_filter :ensure_genuine_user, only: [:create, :update]
@@ -19,7 +19,7 @@ class Api::V1::BooksController < ApplicationController
     if @book.save
       render json: @book, serializer: BookSerializer
     else
-      render json: { errors: notification.errors.full_messages }, status: :unprocessable_entity
+      render_errors(notification)
     end
   end
 
@@ -29,19 +29,24 @@ class Api::V1::BooksController < ApplicationController
 
   def update
     if book.update_attributes(book_params)
-      render json: { updated: true }
+      render_json_success
     else
-      render json: { updated: false }, status: :unprocessable_entity
+      render_json_error
     end
   end
 
   def destroy
+    if book.destroy
+      render_json_success
+    else
+      render_json_error
+    end
   end
 
   private
 
   def book
-    @book ||= Book.where(id: params[:id]).first
+    @book ||= Book.find(params[:id])
   end
 
   def filter
@@ -49,7 +54,7 @@ class Api::V1::BooksController < ApplicationController
 
     user =
       if auth_key.present? && params[:user_id]
-        current_auth_user
+        current_user
       end
 
     @filter = Filter::Books.new(user, params)

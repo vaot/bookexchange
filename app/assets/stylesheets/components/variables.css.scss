@@ -1,0 +1,35 @@
+$white: white;
+$black: black;
+
+$text-accent: #de0202;
+
+$shadow1: 1px 1px 5px 0 rgba(0, 0, 0, .35);
+
+%vertical-content {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -0.25em;
+}
+
+%truncate-text {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+%truncate-text-multiline {
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@mixin clearfix {
+  &::after {
+    clear: both;
+    content: "";
+    display: table;
+  }
+}

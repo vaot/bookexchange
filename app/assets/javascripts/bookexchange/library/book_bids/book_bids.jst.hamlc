@@ -1,4 +1,4 @@
-.bids-card-container
+.bids-card
   .form-group
     %label.sr-only
       Amount (in dollars)
@@ -8,16 +8,8 @@
       %input.form-control(type="text" placeholder="Amount" ng-model="bid.price")
       .input-group-addon
         \.00
-  .button-nanuk(ng-click="create()")
-    %span P
-    %span l
-    %span a
-    %span c
-    %span e
-    %span &nbsp;
-    %span B
-    %span i
-    %span d
+
+  %div(button-nanuk="Place Bid" ng-click="create()")
 
   %h1
     Bids

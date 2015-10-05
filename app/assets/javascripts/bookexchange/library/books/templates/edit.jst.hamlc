@@ -1,11 +1,45 @@
-.container.book-edit
-  %div(ng-include="'/bookexchange/library/books/templates/form.html'")
+.container
+  .book-form
+    .row
+      .col-sm-4
+        .form-group
+          %input.form-control(type="text" placeholder="Title" ng-model="book.title")
+        .form-group
+          %input.form-control(type="text" placeholder="Author" ng-model="book.author")
+        .form-group
+          %input.form-control(type="text" placeholder="ISBN" ng-model="book.isbn")
+        .checkbox
+          %label
+            %input(type="checkbox" ng-model="book.accept_offers")
+            Accept Offers
+        .checkbox
+          %label
+            %input(type="checkbox" ng-model="book.show_offers")
+            Show Offers
+        .form-group
+          .book-tags
+            %span.label.label-primary(ng-repeat="tag in book.tags")
+              {{tag}}
+          .input-group
+            %input.form-control(type="text" placeholder="Add a new tag..." ng-model="tag")
+            %span.input-group-btn
+              %button.btn.btn-default(type="button" ng-click="addTag(tag, book)")
+                Add
+
+      .col-sm-4.text-center
+        .form-group
+          %h4
+            Upload a book cover
+        .file-upload-drop-box(ngf-drop="upload($files)" accept="image/*")
+          Drop Here
+
+        .file-upload-button(button-nanuk="Select File")
+          %input(type="file" ngf-select="upload($files)")
+      .col-sm-4
+        %h3
+          Preview
+        %div(ng-include="'/bookexchange/library/books/templates/book.html'")
+
   .row
     .col-sm-5
-      .button-nanuk(ng-click="update()")
-        %span U
-        %span p
-        %span d
-        %span a
-        %span t
-        %span e
+      %div(button-nanuk="Update" ng-click="update()")

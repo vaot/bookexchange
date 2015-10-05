@@ -1,4 +1,4 @@
-class Api::V1::BidsController < ApplicationController
+class Api::V1::BidsController < Api::V1::ApiController
 
   before_filter :ensure_auth_key_present, except: [:index]
 
@@ -7,11 +7,11 @@ class Api::V1::BidsController < ApplicationController
   end
 
   def create
-    bid = book.bids.create(bid_params.merge(user_id: current_auth_user.id))
-    if bid.persisted?
+    bid = book.bids.new(book.bids.includes(:owner))
+    if bid.save
       render json: bid, serializer: BidSerializer
     else
-      render json: { error: "Couldn't Place Bid" }, status: :unprocessable_entity
+      render_error(bid)
     end
   end
 

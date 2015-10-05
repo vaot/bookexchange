@@ -1,4 +1,4 @@
-class Api::V1::MediasController < ApplicationController
+class Api::V1::MediasController < Api::V1::ApiController
 
   def create
     @media = Media::BookCover.create(media_params)

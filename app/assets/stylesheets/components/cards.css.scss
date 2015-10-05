@@ -1,0 +1,77 @@
+//
+// Cards
+//
+
+@import 'variables';
+
+.book-card {
+  @include clearfix;
+  box-shadow: $shadow1;
+  background-color: white;
+  position: relative;
+  display: flex;
+
+  .book-image {
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+
+  .book-details {
+    padding: 15px;
+    display: flex;
+    flex: 2;
+    flex-direction: column;
+
+    h1 {
+      @extend %truncate-text;
+      color: $text-accent;
+      font-size: 28px;
+      margin: 5px 0 10px;
+    }
+
+    .book-description,
+    .book-author,
+    .book-isbn {
+      font-size: 16px;
+    }
+
+    .book-author {
+      @extend %truncate-text;
+    }
+
+    .book-description {
+      @extend %truncate-text-multiline;
+    }
+
+    .button-nanuk {
+      width: 200px;
+      margin-top: 30px;
+      align-self: flex-end;
+    }
+  }
+}
+
+.book-details {
+  [class^="book-"]:not(.book-description) {
+    @extend %truncate-text;
+  }
+}
+
+.bids-card {
+  box-shadow: $shadow1;
+  background-color: white;
+  position: relative;
+  padding: 15px;
+
+  .form-group {
+    max-width: 300px;
+    display: inline-block;
+    margin: 0 15px 0 0;
+    vertical-align: middle;
+  }
+
+  .button-nanuk {
+    vertical-align: middle;
+  }
+}

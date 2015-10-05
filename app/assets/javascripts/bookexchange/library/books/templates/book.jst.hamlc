@@ -2,7 +2,7 @@
   .book-image(ui-sref="books.show({id: book.id})")
     %img(src="{{book.cover_url.small}}")
   .book-details
-    %h2
+    %h2.book-title
       {{book.title}}
     .book-isbn
       %small
@@ -17,6 +17,9 @@
     .book-tags
       %span.label.label-primary(ng-repeat="tag in book.tags")
         {{tag}}
-    %a.edit-book(ng-if="currentUser.canEdit(book)"
+    %a.edit-book(ng-if="currentUser.can('edit', book)"
                  ui-sref="books.edit({id: book.id})")
       Edit
+    %a.delete-book(ng-if="currentUser.can('delete', book)"
+                   ng-click="deleteBook(book.id)")
+      Delete

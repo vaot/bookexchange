@@ -23,33 +23,44 @@ app.controller 'BookController', [
     $scope.book = bookResource.book ? {}
     $rootScope.themeColor = $scope.book.dominant_color
 
-    $scope.isbnLookUp ?= {}
+    $scope.bookFormActive = false
+
+    $scope.isbnSearch =
+      query: ''
+      enabled: true
+      results: []
 
     $scope.search = (query) ->
+      return unless query.isbn.length > 0
       GoogleBooksService.search(query).then (response) ->
-        $scope.isbnLookUp.results = response.data.items
+        $scope.isbnSearch.results = response.data.items
 
     $scope.setBookDetails = (info) ->
-      BooksService.copyFromGoogle($scope.book, info)
-      $scope.isbnLookUp.done = true
+      GoogleBooksService.copyDetails($scope.book, info)
+      $scope.isbnSearch.enabled = false
+      $scope.showForm()
 
     $scope.create = ->
-      NProgress.start()
       angular.extend($scope.book, user_id: UserService.currentUser('id'))
 
       BooksService.save($scope.book).then (response) ->
-        NProgress.done()
-        $state.go('books.index')
+        $state.go('books.show', id: response.book.id)
 
     $scope.update = ->
       BooksService.update($scope.book).then (response) ->
-        $state.go('books.index')
+        $state.go('books.show', id: $scope.book.id)
 
     $scope.addTag = (tag, book = $scope.book) ->
       return unless tag?
       book.tags ?= []
       return if tag in book.tags
       book.tags.push(tag)
+
+    $scope.showForm = ->
+      $scope.bookFormActive = true
+
+    $scope.hideForm = ->
+      $scope.bookFormActive = false
 
     $scope.upload = (files) ->
       for file in files

@@ -7,14 +7,11 @@ app.service 'BooksService', [
   ) ->
     api = {}
 
-    getBookAuthors = (info) ->
-      (info.authors ? []).join(', ')
-
-    getBookISBN = (info) ->
-      info.industryIdentifiers[0]?.identifier
-
     api.save = (params = {}) ->
-      BooksResource.save(params).$promise
+      NProgress.start()
+      BooksResource.save(params).$promise.then (response) ->
+        NProgress.done()
+        response
 
     api.update = (params = {}) ->
       BooksResource.update(params).$promise
@@ -22,16 +19,8 @@ app.service 'BooksService', [
     api.query = (params = {}) ->
       BooksResource.query(params).$promise
 
-    api.copyFromGoogle = (book, data) ->
-      book.title       = data.volumeInfo.title
-      book.tags        = data.volumeInfo.categories
-      book.description = data.volumeInfo.description
-      book.isbn        = getBookISBN(data.volumeInfo)
-      book.author      = getBookAuthors(data.volumeInfo)
-
-      book.cover_url =
-        medium: data.volumeInfo.imageLinks.thumbnail
-        small:  data.volumeInfo.imageLinks.thumbnail
+    api.delete = (bookId) ->
+      BooksResource.delete(bookId).$promise
 
     api
 

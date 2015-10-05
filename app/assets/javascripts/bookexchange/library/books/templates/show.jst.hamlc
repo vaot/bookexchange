@@ -1,12 +1,13 @@
 .container.book-show
   .row
-    .col-sm-8.col-sm-offset-1
-      .book-card-container.clearfix
+    .col-sm-7
+      .book-card
         .book-image
           %img(ng-src="{{book.cover_url.medium}}")
         .book-details
-          %h1
+          %h1.book-title
             {{book.title}}
+          %br
           .book-isbn
             %strong
               ISBN:
@@ -15,24 +16,13 @@
             %strong
               Author:
             {{book.author}}
-          .button-nanuk.buy-book
-            %span B
-            %span u
-            %span y
-            %span &nbsp;
-            %span i
-            %span t
-            %span &nbsp;
-            %span f
-            %span o
-            %span r
-            %span &nbsp;
-            %span $
-            %span 2
-            %span 0
-            %span 0
-            %span 0
+          %br
+          .book-description
+            %strong
+              Summary:
+            {{book.description}}
 
-      .card-space
+          %div(button-nanuk="Buy now for $200")
 
+    .col-sm-5
       %div(ui-view="bids")

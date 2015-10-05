@@ -1,0 +1,24 @@
+//
+// Forms
+//
+
+.form-control {
+  border-radius: 0;
+  height: 38px;
+
+  &:focus {
+    border-color: rgba(15, 188, 216, 0.88);
+  }
+}
+
+.input-group-addon {
+  border-radius: 0;
+  min-width: 40px;
+}
+
+.input-group-btn {
+  .btn {
+    border-radius: 0;
+    height: 38px;
+  }
+}
