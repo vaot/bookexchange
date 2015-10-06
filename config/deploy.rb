@@ -31,7 +31,7 @@ set :keep_releases, 5
 
 ## Linked Files & Directories (Default None):
 set :linked_files, %w{config/database.yml config/aws.yml}
-set :linked_dirs,  %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+set :linked_dirs,  %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
 namespace :puma do
   desc 'Create Directories for Puma Pids and Socket'
@@ -49,7 +49,7 @@ namespace :deploy do
   desc "Link nginx config"
   task :create_symlinks do
     on roles(:app) do
-      execute "sudo ln -nfs /home/ubuntu/apps/bookexchange/current/deployment/nginx/nginx.conf     /etc/nginx/nginx.conf"
+      execute "sudo ln -nfs /home/ubuntu/apps/bookexchange/current/deployment/nginx/nginx.conf     /etc/nginx/sites-available/default"
     end
   end
 
