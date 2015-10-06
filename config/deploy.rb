@@ -46,6 +46,13 @@ namespace :puma do
 end
 
 namespace :deploy do
+  desc "Link nginx config"
+  task :create_symlinks do
+    on roles(:app) do
+      execute "sudo ln -nfs /home/ubuntu/apps/bookexchange/current/deployment/nginx/nginx.conf     /etc/nginx/nginx.conf"
+    end
+  end
+
   desc "Make sure local git is in sync with remote."
   task :check_revision do
     on roles(:app) do
@@ -73,6 +80,7 @@ namespace :deploy do
   end
 
   before :starting,     :check_revision
+  after  'deploy:symlink:shared', 'deploy:create_symlinks'
   after  :finishing,    :compile_assets
   after  :finishing,    :cleanup
   after  :finishing,    :restart
