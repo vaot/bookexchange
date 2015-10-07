@@ -1,7 +1,5 @@
 class Api::V1::NotificationsController < Api::V1::ApiController
 
-  before_filter :ensure_auth_key_present
-
   def index
     render json: current_auth_user.notifications, each_serializer: NotificationSerializer
   end

@@ -5,12 +5,6 @@ module AuthSystem
     end
   end
 
-  def ensure_genuine_user
-    if current_auth_user.id != params[:book][:user_id]
-      render_json_unauthorized
-    end
-  end
-
   def auth_key
     @auth_key ||= AuthKey.active.where(auth_key: request.headers['X-BookExchange-Auth-Key']).first
   end

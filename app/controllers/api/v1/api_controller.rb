@@ -1,5 +1,7 @@
 class Api::V1::ApiController < ApplicationController
 
+  before_filter :ensure_auth_key_present
+
   def render_json_success
     render json: { success: true }
   end

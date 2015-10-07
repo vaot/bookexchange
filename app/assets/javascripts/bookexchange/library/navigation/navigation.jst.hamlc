@@ -12,12 +12,13 @@
       %li
         .fast-search(fast-search="true")
       %li
-        %a(ui-sref="books.new") Post an Offer
+        %a(ng-if="currentUser.loggedIn()" ui-sref="books.new")
+          Post an Offer
     %ul.nav.navbar-nav.pull-right
       %li.act
-        %a(ng-if="!currentUser.logged_in" href="#" onclick="window.location.replace('/users/auth/facebook')")
-          Login With Facebook
-        %a(ng-if="currentUser.logged_in" href="#" onclick="window.location.replace('/sign_out')")
+        %a(ng-if="!currentUser.loggedIn()" href="#" onclick="window.location.replace('/users/auth/facebook')")
+          Login with Facebook
+        %a(ng-if="currentUser.loggedIn()" href="#" onclick="window.location.replace('/sign_out')")
           Log out
 
 .site-container

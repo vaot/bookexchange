@@ -45,6 +45,12 @@ class Api::V1::BooksController < Api::V1::ApiController
 
   private
 
+  def ensure_genuine_user
+    if current_auth_user.id != params[:book][:user_id]
+      render_json_unauthorized
+    end
+  end
+
   def book
     @book ||= Book.find(params[:id])
   end

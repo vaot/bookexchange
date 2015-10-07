@@ -1,18 +1,22 @@
 %span.triangle-brand(ng-style="{'border-left-color': themeColor}")
+
 .navbar-sidebar-container(ng-class="{'expand-sidebar': expandSidebar}" ng-style="{'background-color': themeColor}")
   .navbar-sidebar
     %ul
       %li
         %a(ui-sref="books.index")
           %i.fa.fa-home
-          %span(ng-if="expandSidebar") Home
+          %span(ng-if="expandSidebar")
+            Home
       %li
-        %a(ui-sref="users.books({id: currentUser.id})")
+        %a(ng-if="currentUser.loggedIn()" ui-sref="users.books({id: currentUser.id})")
           %i.fa.fa-book
-          %span(ng-if="expandSidebar") My Books
+          %span(ng-if="expandSidebar")
+            My Books
       %li
-        %a(ui-sref="users.show({id: currentUser.id})")
+        %a(ng-if="currentUser.loggedIn()" ui-sref="users.show({id: currentUser.id})")
           %i.fa.fa-user
-          %span(ng-if="expandSidebar") Profile
+          %span(ng-if="expandSidebar")
+            Profile
 
 %div(ng-transclude="true")

@@ -1,9 +1,9 @@
 app = angular.module 'bookexchange'
 
 app.service 'UserService', [
-  '$rootScope'
+  'ServerData'
   (
-    $rootScope
+    ServerData
   ) ->
 
     api = {}
@@ -11,18 +11,21 @@ app.service 'UserService', [
     currentUserMixin =
       actions: ['delete', 'edit']
 
+      loggedIn: ->
+        @id?
+
       ownsBook: (book) ->
         book and book.user_id is @id
 
       can: (action, book) ->
-        action in @actions and @logged_in and @ownsBook(book)
+        action in @actions and @loggedIn() and @ownsBook(book)
 
     currentUser = ->
       if @_currentUser?
         @_currentUser
       else
-        _currentUser  = Utils.parseJson($rootScope.serverData)
-        @_currentUser = angular.extend(_currentUser, currentUserMixin)
+        _currentUser  = ServerData.get('current_user')
+        @_currentUser = angular.extend(_currentUser ? {}, currentUserMixin)
 
     api.currentUser = (property) ->
       if property?
