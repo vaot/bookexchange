@@ -54,7 +54,7 @@ class Api::V1::BooksController < Api::V1::ApiController
 
     user =
       if auth_key.present? && params[:user_id]
-        current_user
+        current_auth_user
       end
 
     @filter = Filter::Books.new(user, params)

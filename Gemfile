@@ -25,6 +25,7 @@ gem 'mini_magick'
 gem 'pg'
 
 group :development do
+    gem 'capistrano-sidekiq'
     gem 'capistrano'
     gem 'capistrano-rvm',     require: false
     gem 'capistrano-rails',   require: false

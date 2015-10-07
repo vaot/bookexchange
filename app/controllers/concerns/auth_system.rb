@@ -6,7 +6,7 @@ module AuthSystem
   end
 
   def ensure_genuine_user
-    if current_user.id != params[:book][:user_id]
+    if current_auth_user.id != params[:book][:user_id]
       render_json_unauthorized
     end
   end
@@ -15,8 +15,9 @@ module AuthSystem
     @auth_key ||= AuthKey.active.where(auth_key: request.headers['X-BookExchange-Auth-Key']).first
   end
 
-  def current_user
-    @current_user ||= auth_key.owner
+  # Dont rename to current_user, it will conflict with devise
+  def current_auth_user
+    @current_auth_user ||= auth_key.owner
   end
 
   private

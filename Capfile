@@ -2,6 +2,7 @@
 require 'capistrano/setup'
 require 'capistrano/deploy'
 
+require 'capistrano/sidekiq'
 require 'capistrano/rails'
 require 'capistrano/bundler'
 require 'capistrano/rvm'

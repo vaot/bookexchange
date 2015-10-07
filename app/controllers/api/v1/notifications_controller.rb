@@ -3,7 +3,7 @@ class Api::V1::NotificationsController < Api::V1::ApiController
   before_filter :ensure_auth_key_present
 
   def index
-    render json: current_user.notifications, each_serializer: NotificationSerializer
+    render json: current_auth_user.notifications, each_serializer: NotificationSerializer
   end
 
   def update
@@ -25,7 +25,7 @@ class Api::V1::NotificationsController < Api::V1::ApiController
   private
 
   def notification
-    @notification ||= current_user.notifications.find(params[:id])
+    @notification ||= current_auth_user.notifications.find(params[:id])
   end
 
   def notification_params
