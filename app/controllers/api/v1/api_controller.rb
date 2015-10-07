@@ -1,7 +1,5 @@
 class Api::V1::ApiController < ApplicationController
 
-  include AuthSystem
-
   def render_json_success
     render json: { success: true }
   end
