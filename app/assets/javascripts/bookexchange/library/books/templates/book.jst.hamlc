@@ -17,9 +17,17 @@
     .book-tags
       %span.label.label-primary(ng-repeat="tag in book.tags")
         {{tag}}
-    %a.edit-book(ng-if="currentUser.can('edit', book)"
-                 ui-sref="books.edit({id: book.id})")
-      Edit
-    %a.delete-book(ng-if="currentUser.can('delete', book)"
-                   ng-click="deleteBook(book.id)")
-      Delete
+
+    .book-controls-trigger
+      %a(href="#" ng-click="expandControls = !expandControls")
+        %i.fa.fa-cog
+    .book-controls-section(ng-if="expandControls")
+      %ul.clearfix
+        %li
+          %a.edit-book(ng-if="currentUser.can('edit', book)" ui-sref="books.edit({id: book.id})")
+            %i.fa.fa-pencil
+            Edit
+        %li
+          %a.delete-book(href="#" ng-if="currentUser.can('delete', book)" ng-click="deleteBook(book)")
+            %i.fa.fa-trash-o
+            Delete

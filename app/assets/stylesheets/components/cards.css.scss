@@ -14,7 +14,6 @@
   .book-image {
     flex: 1;
     display: flex;
-    align-items: center;
   }
 
   .book-details {
@@ -74,4 +73,12 @@
   .button-nanuk {
     vertical-align: middle;
   }
+}
+
+// User card
+.user-card {
+  box-shadow: $shadow1;
+  background-color: white;
+  position: relative;
+  padding: 15px;
 }

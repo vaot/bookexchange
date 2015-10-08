@@ -1,2 +1,10 @@
-%h1
-  User Show
+.container.user-show
+  .row
+    .col-sm-6
+      .user-card.clearfix
+        .user-profile-pic
+          %img(ng-src="{{currentUser.profile_picture}}")
+        .user-details
+          %h3 {{currentUser.first_name}} {{currentUser.last_name}}
+    .col-sm-6
+      %div(horizontal-tabs="true")

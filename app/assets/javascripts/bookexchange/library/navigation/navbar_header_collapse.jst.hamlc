@@ -6,17 +6,22 @@
       %li
         %a(ui-sref="books.index")
           %i.fa.fa-home
-          %span(ng-if="expandSidebar")
+          %span(ng-show="expandSidebar")
             Home
       %li
         %a(ng-if="currentUser.loggedIn()" ui-sref="users.books({id: currentUser.id})")
           %i.fa.fa-book
-          %span(ng-if="expandSidebar")
+          %span(ng-show="expandSidebar")
             My Books
       %li
         %a(ng-if="currentUser.loggedIn()" ui-sref="users.show({id: currentUser.id})")
           %i.fa.fa-user
-          %span(ng-if="expandSidebar")
+          %span(ng-show="expandSidebar")
             Profile
+      %li
+        %a(ng-if="currentUser.loggedIn()" ui-sref="bids.index({user_id: currentUser.id})")
+          %i.fa.fa-money
+          %span(ng-show="expandSidebar")
+            My bids
 
 %div(ng-transclude="true")

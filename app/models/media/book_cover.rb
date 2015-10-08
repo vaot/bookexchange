@@ -9,7 +9,7 @@ class Media::BookCover < Media
   validates_attachment_content_type :attachment,
     :content_type => %w(image/jpg image/jpeg image/png image/gif)
 
-  after_create :get_dominant_color
+  after_commit :get_dominant_color, on: :create
 
   def hex_dominant_color
     dominant_color || get_dominant_color

@@ -7,7 +7,7 @@ class Api::V1::BidsController < Api::V1::ApiController
   end
 
   def create
-    bid = book.bids.new(book.bids.includes(:owner))
+    bid = book.bids.new(bid_params.merge(user_id: current_auth_user.id))
     if bid.save
       render json: bid, serializer: BidSerializer
     else
