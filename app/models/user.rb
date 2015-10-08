@@ -1,7 +1,9 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :omniauthable, omniauth_providers: [:facebook]
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable, :omniauthable,
+          omniauth_providers: [:facebook]
 
   has_one :profile_picture, dependent:  :destroy, as: :owner, class_name: "Media::ProfilePicture"
   has_many :books
