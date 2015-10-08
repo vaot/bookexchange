@@ -5,6 +5,7 @@
 @import 'components/search';
 @import 'components/upload';
 @import 'components/horizontal_tab';
+@import 'components/users';
 
 body {
   font-family: 'Open Sans';
@@ -130,11 +131,6 @@ img {
 
       li {
         float: left;
-        margin-left: 15px;
-
-        &:first-child {
-          margin-left: 0;
-        }
 
         a {
           padding: 5px 22px;
@@ -177,26 +173,5 @@ img {
   .book-details {
     flex: 2;
     padding: 15px;
-  }
-}
-
-// User
-.user-show {
-  margin-top: 30px;
-  position: relative;
-
-  .user-card {
-    .user-profile-pic {
-      float: left;
-    }
-
-    .user-details {
-      float: left;
-      margin-left: 20px;
-
-      h3 {
-        margin-top: 0;
-      }
-    }
   }
 }
