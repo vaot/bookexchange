@@ -8,7 +8,7 @@ RUN apt-get install -y build-essential
 RUN apt-get install -qy nginx curl nodejs less vim
 
 
-ENV APP_HOME /myapp
+ENV APP_HOME /bookexchange
 RUN mkdir $APP_HOME
 WORKDIR $APP_HOME
 
