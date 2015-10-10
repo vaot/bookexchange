@@ -1,5 +1,5 @@
 # This is a comment
-FROM ruby:2.3.3
+FROM ruby:2.2
 MAINTAINER Vaot "victorvaot@gmail.com"
 
 # Base
