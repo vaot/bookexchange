@@ -12,6 +12,8 @@ ENV APP_HOME /myapp
 RUN mkdir $APP_HOME
 WORKDIR $APP_HOME
 
+ADD deployment/nginx/nginx.conf /etc/nginx/sites-available/default
+
 COPY Gemfile Gemfile
 COPY Gemfile.lock Gemfile.lock
 RUN bundle install
