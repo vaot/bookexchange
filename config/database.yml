@@ -15,5 +15,7 @@ test:
   database: db/test
 
 production:
-  <<: *default
   database: db/production
+  host: <%= ENV['POSTGRES_PORT_5432_TCP_ADDR'] %>
+  port: <%= ENV['POSTGRES_PORT_5432_TCP_PORT'] %>
+  pool: <%= ENV['POSTGRES_POOL_SIZE'] %>
