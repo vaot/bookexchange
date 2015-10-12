@@ -5,7 +5,10 @@ def load_credentials_from_config_file
   if File.exist? aws_config_file
     YAML.load(File.open(aws_config_file).read)[Rails.env]
   else
-    nil
+    {
+      access_key_id: ENV["AWS_ACCESS_KEY"],
+      secret_access_key: ENV["AWS_SECRET_KEY"]
+    }
   end
 end
 
