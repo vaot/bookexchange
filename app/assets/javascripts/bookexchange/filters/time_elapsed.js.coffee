@@ -30,6 +30,8 @@ app.filter 'timeElapsed', ->
 
     result  = ""
     result += "#{days} days" if days > 0
-    result += " #{hours} hours" if hours > 0
-    result += " #{minutes} mins" if hours > 0
+    result += " #{hours} hours" if hours > 0 && !days
+    result += " #{minutes} mins" if hours > 0 && !days
     result += " ago" if result.present?
+
+    result

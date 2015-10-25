@@ -3,7 +3,10 @@ class Api::V1::BidsController < Api::V1::ApiController
   before_filter :ensure_auth_key_present, except: [:index]
 
   def index
-    render json: book.bids.includes(:owner), each_serializer: BidSerializer, root: false
+    render json: book.bids.includes(:owner),
+      each_serializer: BidSerializer,
+      root: false,
+      current_user: current_auth_user
   end
 
   def create

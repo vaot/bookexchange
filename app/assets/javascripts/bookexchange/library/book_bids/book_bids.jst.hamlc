@@ -15,9 +15,14 @@
 
   %h1
     Bids
-  .bid(ng-repeat="bid in bids")
+  .bid.clearfix(ng-repeat="bid in bids" ng-click="expandBidDetailsSection = !expandBidDetailsSection")
     %a(href="#")
-      User {{$index+1}}
-    ${{bid.price}}
-    %span
+      %i.fa.fa-money
+      User {{bid.user_key}}
+    %span.bid-price ${{bid.price}}
+    %span.bid-time
       {{bid.created_at | timeElapsed}}
+      %i.fa.expand-handler(ng-class="{'fa-plus': !expandBidDetailsSection, 'fa-minus': expandBidDetailsSection}")
+
+    .bid-details-section(ng-if="expandBidDetailsSection")
+      %div(button-nanuk="Accept Bid" ng-click="create()")

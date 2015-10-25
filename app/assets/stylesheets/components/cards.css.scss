@@ -88,6 +88,31 @@
     }
   }
 
+  .bid {
+    padding: 8px;
+    cursor: pointer;
+
+    .bid-time {
+      float: right;
+    }
+
+    .bid-price {
+      font-weight: bolder;
+    }
+
+    .expand-handler {
+      visibility: hidden;
+    }
+
+    &:hover {
+      background-color: rgba(13, 70, 68, 0.04);
+
+      .expand-handler {
+        visibility: visible;
+      }
+    }
+  }
+
   .form-group {
     max-width: 300px;
     display: inline-block;
