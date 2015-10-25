@@ -9,6 +9,7 @@ app.controller 'BookController', [
   'UserService'
   'GoogleBooksService'
   '$rootScope'
+  'ColorService'
   (
     $scope
     $state
@@ -18,6 +19,7 @@ app.controller 'BookController', [
     UserService
     GoogleBooksService
     $rootScope
+    ColorService
   ) ->
 
     $scope.book = bookResource.book ? {}
@@ -29,6 +31,10 @@ app.controller 'BookController', [
       query: ''
       enabled: true
       results: []
+
+    $scope.changeOpacity = (percentage, hexColor) ->
+      rgba = ColorService.hexToRgb(hexColor)
+      ColorService.rgbToString(rgba, 0.3)
 
     $scope.search = (query) ->
       return unless query.isbn.length > 0

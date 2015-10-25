@@ -12,6 +12,7 @@ app.run [
 app.run [
   '$rootScope'
   ($rootScope) ->
+
     $rootScope.$on '$stateChangeSuccess', (event, toState, toParams, fromState, fromParams) ->
       if fromState.name is 'books.show'
         $rootScope.themeColor = ""

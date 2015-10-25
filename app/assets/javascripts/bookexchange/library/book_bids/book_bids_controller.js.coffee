@@ -16,5 +16,4 @@ app.controller 'BookBidsController', [
 
       BookBidsService.save(params).then (response) ->
         $scope.bids.push(response.bid)
-
 ]
