@@ -1,6 +1,6 @@
 .bids-card
   .bids-control-container
-    .control-disabler(ng-style="{'background-color': changeOpacity(80, themeColor)}")
+    .control-disabler(data-content="You can't place bids, you are the owner." ng-style="{'background-color': changeOpacity(80, themeColor)}" ng-if="currentUser.ownsBook(book)")
     .form-group
       %label.sr-only
         Amount (in dollars)
@@ -11,7 +11,7 @@
         .input-group-addon
           \.00
 
-      %div(button-nanuk="Place Bid" ng-disabled="currentUser.ownsBook(book)" ng-click="create()")
+      %div(button-nanuk="Place Bid" ng-click="create()")
 
   %h1
     Bids

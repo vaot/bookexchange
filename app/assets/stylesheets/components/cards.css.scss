@@ -74,7 +74,7 @@
       z-index: +3;
 
       &:after {
-        content: "You can't place bids, you are the owner.";
+        content: attr(data-content);
         text-align: center;
         position: absolute;
         right: 0;
