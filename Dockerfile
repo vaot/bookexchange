@@ -8,17 +8,17 @@ RUN apt-get install -y build-essential
 RUN apt-get install -qy nginx curl nodejs less vim
 
 
-ENV APP_HOME /bookexchange
-RUN mkdir $APP_HOME
-WORKDIR $APP_HOME
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+
+# Rails
+COPY . /usr/src/app
 
 ADD deployment/nginx/nginx.conf /etc/nginx/sites-available/default
+RUN mkdir -p tmp/pids tmp/sockets tmp/cache tmp/sessions
+RUN mkdir log
 
 COPY deployment/docker/* /usr/bin/
-
-COPY Gemfile Gemfile
-COPY Gemfile.lock Gemfile.lock
-RUN bundle install
+RUN chmod +x /usr/bin/*
 
 EXPOSE 80
-ADD . $APP_HOME
