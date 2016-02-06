@@ -13,9 +13,10 @@ WORKDIR /usr/src/app
 
 # Rails
 COPY . /usr/src/app
+RUN ["/bin/sh", "-c", "bundle install"]
 
 ADD deployment/nginx/nginx.conf /etc/nginx/sites-available/default
-RUN mkdir -p tmp/pids tmp/sockets tmp/cache tmp/sessions
+RUN mkdir -p tmp/pids tmp/sockets tmp/cache tmp/sessions log
 
 COPY deployment/docker/* /usr/bin/
 RUN chmod +x /usr/bin/*
