@@ -16,7 +16,6 @@ COPY . /usr/src/app
 
 ADD deployment/nginx/nginx.conf /etc/nginx/sites-available/default
 RUN mkdir -p tmp/pids tmp/sockets tmp/cache tmp/sessions
-RUN mkdir log
 
 COPY deployment/docker/* /usr/bin/
 RUN chmod +x /usr/bin/*
