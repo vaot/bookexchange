@@ -15,7 +15,9 @@ WORKDIR /usr/src/app
 COPY . /usr/src/app
 RUN ["/bin/sh", "-c", "bundle install"]
 
-ADD deployment/nginx/nginx.conf /etc/nginx/sites-available/default
+ADD deployment/docker/nginx-sites.conf /etc/nginx/sites-enabled/default
+ADD deployment/docker/nginx.conf /etc/nginx/nginx.conf
+
 RUN mkdir -p tmp/pids tmp/sockets tmp/cache tmp/sessions log
 
 COPY deployment/docker/* /usr/bin/
