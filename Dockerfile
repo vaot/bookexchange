@@ -23,4 +23,6 @@ RUN mkdir -p tmp/pids tmp/sockets tmp/cache tmp/sessions log
 COPY deployment/docker/* /usr/bin/
 RUN chmod +x /usr/bin/*
 
+RUN RAILS_ENV=production bundle exec rake assets:precompile --trace
+
 EXPOSE 80
