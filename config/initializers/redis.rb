@@ -8,7 +8,11 @@ module Bookexchange
 
   def redis
     return @redis if @redis.present?
-    @redis = Redis::Namespace.new(:book_exchange, redis: Redis.new(host: "localhost", port: 6379, db: 0))
+    @redis =
+      Redis::Namespace.new(
+        :book_exchange,
+        redis: Redis.new(host: ENV["REDIS_PORT_6379_TCP_ADDR"], port: ENV["REDIS_PORT_6379_TCP_PORT"], db: 0)
+      )
   end
 
 end
