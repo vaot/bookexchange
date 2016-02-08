@@ -1,6 +1,7 @@
 class AuthController < ApplicationController
 
   def facebook
+    # TO DO, If this fails, implement error handling.
     @user = User.from_omniauth(request.env['omniauth.auth'])
 
     if @user.persisted?
