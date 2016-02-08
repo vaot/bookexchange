@@ -11,7 +11,7 @@ module AuthSystem
 
   # Dont rename to current_user, it will conflict with devise
   def current_auth_user
-    @current_auth_user ||= auth_key.owner
+    @current_auth_user ||= auth_key.try :owner
   end
 
   private
